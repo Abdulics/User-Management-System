@@ -1,11 +1,13 @@
 package com.dul.userManagement;
 
+import java.util.List;
+
 public class Admin extends User {
 
-	private final String P = "ADMIN";
+	private final String[] PREV= {"SUP", "EMP"};
+	private List<User> supervisors;
 
-	public Admin() {
-		this.getFirstName();
+	private Admin() {
 	}
 	
 }
