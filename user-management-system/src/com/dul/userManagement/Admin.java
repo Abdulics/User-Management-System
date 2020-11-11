@@ -1,137 +1,136 @@
 package com.dul.userManagement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Admin extends User {
-	
+
 	public String password = "password";
-	private final String[] PREV= {"SUP", "EMP"};
-	private Supervisor supervisor;
-	
+	private final String[] PREV = { "SUP", "EMP" };
+	private ArrayList<Object> supList = new ArrayList<>();
+	//private ArrayList<Employee> empList = new ArrayList<>();
 
-	protected Admin() {
+	/*
+	 * Return the list of newly added users, employees, supervisors and admins.
+	 */
+	public ArrayList<Object> getSupList() {
+		return supList;
 	}
-	
 
-//	public User getSupervisorList() {
-//		return supervisors;
-//	}
-
-
-//	public void setSupervisorList(List<User> supervisors) {
-//		this.supervisors = supervisors;
-//	}
-
+	public Admin() {
+		// super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public String[] getPREV() {
 		return PREV;
 	}
-	
-	@SuppressWarnings("static-access")
-	public User add_supervisor(String firsname, String lastname, String username, String email, String address) {
-//		boolean bool = false;
-//		User newsup = new User();
-//		newsup.setFirstName(firsname);
-//		newsup.setLastName(lastname);
-//		newsup.setUsername(username);
-//		newsup.setAddress(address);
-//		newsup.setEmail(email);
-//		newsup.setPassword(this.password);
-		
-//		this.supervisors.add(newsup);
-		supervisor = new Supervisor();
+
+	private void add_supervisor(String firsname, String lastname, String username, String email, String address) {
+		Supervisor supervisor = new Supervisor();
 		supervisor.setFirstName(firsname);
 		supervisor.setLastName(lastname);
 		supervisor.setUsername(username);
 		supervisor.setAddress(address);
 		supervisor.setEmail(email);
 		supervisor.setPassword(this.password);
-		
-		return supervisor;
+		System.out.println("Inside add supp " + supervisor.toString());
+		supList.add(supervisor);
+		System.out.println("Size of sup is: " + supList.size());
 	}
 
+	private void add_employee(String firsname, String lastname, String username, String email, String address) {
 
-	@Override
+		Employee employee = new Employee();
+		employee.setFirstName(firsname);
+		employee.setLastName(lastname);
+		employee.setUsername(username);
+		employee.setAddress(address);
+		employee.setEmail(email);
+		employee.setPassword(this.password);
+		System.out.println("Inside add empl " + employee.toString());
+		supList.add(employee);
+	}
+
 	String getUsername() {
 		return username;
 	}
 
-
-	@Override
 	void setUsername(String username) {
-		Admin.username = username;
-		
+		this.username = username;
+
 	}
 
-
-	@Override
-	String getPassword() {
+	private String getPassword() {
 		return password;
 	}
 
-
-	@Override
 	void setPassword(String password) {
 		this.password = password;
-		
+
 	}
 
-
-	@Override
 	String getFirstName() {
 		return firstName;
 	}
 
-
-	@Override
 	void setFirstName(String firstName) {
-		Admin.firstName = firstName;
-		
+		this.firstName = firstName;
+
 	}
 
-
-	@Override
 	String getLastName() {
 		return lastName;
 	}
 
-
-	@Override
 	void setLastName(String lastName) {
-		Admin.lastName= lastName;
-		
+		this.lastName = lastName;
+
 	}
 
-
-	@Override
 	String getAddress() {
 		return Address;
 	}
 
-
-	@Override
 	void setAddress(String address) {
-		Admin.Address = address;
-		
+		this.Address = address;
+
 	}
 
-
-	@Override
 	String getEmail() {
-		
+
 		return email;
 	}
 
+	void setEmail(String email) {
+		this.email = email;
+
+	}
 
 	@Override
-	void setEmail(String email) {
-		Admin.email = email;
-		
-	}
-	
-	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + " [firstName=" + firstName + ", lastName=" + lastName + ", Address=" + Address + ", email=" + email
-				+ "]";
+		return this.getClass().getSimpleName() + " [firstName=" + firstName + ", lastName=" + lastName + ", Address="
+				+ Address + ", email=" + email + "]";
+	}
+
+	@Override
+	String[] getProfile() {
+		
+		return null;
+	}
+
+	@Override
+	boolean addUser(Object obj, String firsname, String lastname, String username, String email, String address) {
+		if (obj instanceof Employee) {
+			add_employee(firsname, lastname, username, email, address);
+			System.out.println("Added employee....");
+		} else if (obj instanceof Supervisor) {
+			add_supervisor(firsname, lastname, username, email, address);
+			System.out.println("Added supervisor......");
+		} else {
+			System.out.println("nothing was added");
+			return false;
+		}
+		return true;
 	}
 }
