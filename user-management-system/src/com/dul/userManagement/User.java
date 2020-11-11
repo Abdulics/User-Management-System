@@ -1,72 +1,29 @@
 package com.dul.userManagement;
 
-public class User {
+public abstract class User {
+		public static String username;
+		public static String password;
+		public static String firstName;
+		public static String lastName;
+		public static String Address;
+		public static String email;
+		
+		protected User() {};
+		abstract String getUsername();
+		abstract void setUsername(String username);
+		abstract String getPassword();
+		abstract void setPassword(String password);
+		abstract String getFirstName();
+		abstract void setFirstName(String firstName);
+		abstract String getLastName();
+		abstract void setLastName(String lastName);
+		abstract String getAddress();
+		abstract void setAddress(String address);
+		abstract String getEmail();
+		abstract void setEmail(String email);
+		
+		@Override
+		public abstract String toString();
 
-	private String username;
-	private String password;
-	private String firstName;
-	private String lastName;
-	private String Address;
-	private String email;
-	private String prev;
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getAddress() {
-		return Address;
-	}
-
-	public void setAddress(String address) {
-		Address = address;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPrev() {
-		return prev;
-	}
-
-	@Override
-	public String toString() {
-		return "User [firstName=" + firstName + ", lastName=" + lastName + ", Address=" + Address + ", email=" + email
-				+ "]";
-	}
-	
-
+		
 }
