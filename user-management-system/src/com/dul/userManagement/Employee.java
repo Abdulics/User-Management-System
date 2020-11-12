@@ -1,6 +1,6 @@
 package com.dul.userManagement;
 
-public class Employee extends User {
+public class Employee extends Supervisor{
 
 	String getUsername() {
 		return username;
@@ -79,16 +79,5 @@ public class Employee extends User {
 	String[] getProfile() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-
-
-	
-
-
-	@Override
-	boolean addUser(Object obj, String firsname, String lastname, String username, String email, String address) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 }

@@ -8,7 +8,7 @@ public class App {
 	public static void main(String[] args) {
 		Admin a = new Admin();
 		Supervisor s = new Supervisor();
-		Employee u = new Employee();
+		Employee e = new Employee();
 		//User e = null;
 		//System.out.println(e.toString());
 //		a.add_supervisor("Abdul", "Omar", "aomar1", "abdul@dul.com", "123 1 st");
@@ -18,16 +18,23 @@ public class App {
 //		System.out.println(a.toString());
 //		System.out.println(u.toString());
 		//System.out.println(e.toString());
-		a.addUser(u, "Abdul", "Omar", "aomar1", "abdul@dul.com", "123 1 st");
+		a.addUser(e, "Abdul", "Omar", "aomar1", "abdul@dul.com", "123 1 st");
 		a.addUser(s, "Abdu", "Omar", "aomar1", "abdul@dul.com", "123 1 st");
-		a.addUser(s, "Abdul", "Omar", "aomar1", "abdul@dul.com", "123 1 st");
-		List<Object> list  = a.getSupList();
-		
-		System.out.println(s.toString());
-		
-		for(int i = 0; i < list.size(); i++) {
-			System.out.println(i+":" + list.get(i));
-		}
+		a.addUser(a, "Abdul", "Omar123", "aomar1", "abdul@dul.com", "123 1 st");
+		s.addUser(e, "Ab", "Omar", "aomar", "abdul@dul.com", "123 1 st");
+		a.addUser(e, "Abcd", "Omar", "aomar1", "abdul@dul.com", "123 1 st");
+		System.out.println(s.addUser(s, "Abbbb", "Omar", "aomar", "abdul@dul.com", "123 1 st"));
+		System.out.println();
+		System.out.println("Employees in Supervisor: ");
+		System.out.println(s.getEmployee());
+		System.out.println();
+		System.out.println("Employees in Admin: ");
+		System.out.println(a.getEmployee());
+		System.out.println("Supervisors in Admin");
+		System.out.println(a.getSupervisor());
+		System.out.println();
+		System.out.println("Admin in Admin: ");
+		System.out.println(a.getAdmin().toString());
 
 	}
 

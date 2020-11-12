@@ -10,7 +10,7 @@ public abstract class User {
 		public String report;
 		
 		abstract String[] getProfile();
-		abstract boolean addUser(Object obj, String firsname, String lastname, String username, String email, String address);
+		protected abstract boolean addUser(Object obj, String firsname, String lastname, String username, String email, String address);
 
 		
 }
