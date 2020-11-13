@@ -2,16 +2,24 @@ package com.dul.userManagement;
 
 public class Admin extends User {
 
+	public Admin(String firsname, String lastname, String username, String email, String address) {
+		this.firstName = firsname;
+		this.lastName = lastname;
+		this.username = username;
+		this.email = email;
+		this.address = address;
+	}
+
 	private Admin admin;
 	public String password = "password";
 	private final String[] PREV = { "SUP", "EMP" };
 	private Supervisor supervisor;
 	private Employee employee;
 
-	private Object add_supervisor(String firsname, String lastname, String username, String email, String address) {
+	private Object add_supervisor(/*String firsname, String lastname, String username, String email, String address*/) {
 		supervisor = new Supervisor();
-		supervisor.setFirstName(firsname);
-		supervisor.setLastName(lastname);
+		supervisor.setFirstName(firstName);
+		supervisor.setLastName(lastName);
 		supervisor.setUsername(username);
 		supervisor.setAddress(address);
 		supervisor.setEmail(email);
@@ -52,7 +60,7 @@ public class Admin extends User {
 			add_employee(firsname, lastname, username, email, address);
 			System.out.println("Added employee....");
 		} else if (obj instanceof Supervisor) {
-			add_supervisor(firsname, lastname, username, email, address);
+			add_supervisor(/*firsname, lastname, username, email, address*/);
 			System.out.println("Added supervisor......");
 		} else if (obj instanceof Admin) {
 			add_admin(firsname, lastname, username, email, address);
@@ -124,11 +132,11 @@ public class Admin extends User {
 	}
 
 	String getAddress() {
-		return Address;
+		return address;
 	}
 
 	void setAddress(String address) {
-		this.Address = address;
+		this.address = address;
 
 	}
 
@@ -151,6 +159,6 @@ public class Admin extends User {
 	@Override
 	public String toString() {
 		return this.getClass().getSimpleName() + " [firstName=" + firstName + ", lastName=" + lastName + ", Address="
-				+ Address + ", email=" + email + "]";
+				+ address + ", email=" + email + "]";
 	}
 }

@@ -2,6 +2,15 @@ package com.dul.userManagement;
 
 public class Employee extends Supervisor{
 
+	public Employee() {
+		//super();
+//		this.firstName = firsName;
+//		this.lastName = lastname;
+//		this.username = username;
+//		this.email = email;
+//		this.address = address;
+	}
+
 	String getUsername() {
 		return username;
 	}
@@ -47,12 +56,12 @@ public class Employee extends Supervisor{
 
 
 	String getAddress() {
-		return Address;
+		return address;
 	}
 
 
 	void setAddress(String address) {
-		this.Address = address;
+		this.address = address;
 		
 	}
 
@@ -70,7 +79,7 @@ public class Employee extends Supervisor{
 	
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + " [firstName=" + firstName + ", lastName=" + lastName + ", Address=" + Address + ", email=" + email
+		return this.getClass().getSimpleName() + " [firstName=" + firstName + ", lastName=" + lastName + ", Address=" + address + ", email=" + email
 				+ "]";
 	}
 

@@ -5,7 +5,7 @@ public abstract class User {
 		public String password;
 		public String firstName;
 		public String lastName;
-		public String Address;
+		public String address;
 		public String email;
 		public String report;
 		

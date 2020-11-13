@@ -1,14 +1,11 @@
 package com.dul.userManagement;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class App {
 
 	public static void main(String[] args) {
-		Admin a = new Admin();
-		Supervisor s = new Supervisor();
-		Employee e = new Employee();
+		Employee e = new Employee(/*"Abdul", "Omar", "aomar1", "abdul@dul.com", "123 1 st"*/);
+		Admin a = new Admin("Admin", "Omar", "aomar1", "abdul@dul.com", "123 1 st");
+		Supervisor s = new Supervisor("Abdul", "Omar", "aomar1", "abdul@dul.com", "123 1 st");
 		//User e = null;
 		//System.out.println(e.toString());
 //		a.add_supervisor("Abdul", "Omar", "aomar1", "abdul@dul.com", "123 1 st");
@@ -22,8 +19,9 @@ public class App {
 		a.addUser(s, "Abdu", "Omar", "aomar1", "abdul@dul.com", "123 1 st");
 		a.addUser(a, "Abdul", "Omar123", "aomar1", "abdul@dul.com", "123 1 st");
 		s.addUser(e, "Ab", "Omar", "aomar", "abdul@dul.com", "123 1 st");
-		a.addUser(e, "Abcd", "Omar", "aomar1", "abdul@dul.com", "123 1 st");
+		s.addUser(e, "Abcd", "Omar", "aomar1", "abdul@dul.com", "123456 1 st");
 		System.out.println(s.addUser(s, "Abbbb", "Omar", "aomar", "abdul@dul.com", "123 1 st"));
+		System.out.printf("Getting address for employee" + s.getAddress());
 		System.out.println();
 		System.out.println("Employees in Supervisor: ");
 		System.out.println(s.getEmployee());

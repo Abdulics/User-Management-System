@@ -3,7 +3,18 @@ package com.dul.userManagement;
 
 public class Supervisor extends Admin{
 	private Object employee;// = new ArrayList<>();
-	
+
+	public Supervisor (String firsname, String lastname, String username, String email, String address) {
+		this.firstName = firsname;
+		this.lastName = lastname;
+		this.username = username;
+		this.email = email;
+		this.address = address;
+	}
+
+	public Supervisor() {
+	}
+
 	String getUsername() {
 		return username;
 	}
@@ -11,7 +22,7 @@ public class Supervisor extends Admin{
 
 	void setUsername(String username) {
 		this.username = username;
-		
+
 	}
 
 
@@ -22,7 +33,7 @@ public class Supervisor extends Admin{
 
 	void setPassword(String password) {
 		this.password = password;
-		
+
 	}
 
 
@@ -33,7 +44,7 @@ public class Supervisor extends Admin{
 
 	void setFirstName(String firstName) {
 		this.firstName = firstName;
-		
+
 	}
 
 
@@ -44,35 +55,35 @@ public class Supervisor extends Admin{
 
 	void setLastName(String lastName) {
 		this.lastName= lastName;
-		
+
 	}
 
 
 	String getAddress() {
-		return Address;
+		return address;
 	}
 
 
 	void setAddress(String address) {
-		this.Address = address;
-		
+		this.address = address;
+
 	}
 
 
 	String getEmail() {
-		
+
 		return email;
 	}
 
 
 	void setEmail(String email) {
 		this.email = email;
-		
+
 	}
 	
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + " [firstName=" + firstName + ", lastName=" + lastName + ", Address=" + Address + ", email=" + email
+		return this.getClass().getSimpleName() + " [firstName=" + firstName + ", lastName=" + lastName + ", Address=" + address + ", email=" + email
 				+ "]";
 	}
 
@@ -82,7 +93,6 @@ public class Supervisor extends Admin{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 	public Object getEmployee() {
 		return employee;
