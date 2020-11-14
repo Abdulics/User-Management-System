@@ -2,9 +2,10 @@ package com.dul.userManagement;
 
 
 public class Supervisor extends Admin{
-	private Object employee;// = new ArrayList<>();
+	private Employee employee;// = new ArrayList<>();
 
-	public Supervisor (String firsname, String lastname, String username, String email, String address) {
+	public Supervisor (Employee employee, String firsname, String lastname, String username, String email, String address) {
+		this.employee = employee;
 		this.firstName = firsname;
 		this.lastName = lastname;
 		this.username = username;
@@ -99,9 +100,9 @@ public class Supervisor extends Admin{
 	}
 	
 	@Override
-	protected boolean addUser(Object obj, String firsname, String lastname, String username, String email, String address) {
-		while(obj instanceof Employee) {
-			employee = add_employee(firsname, lastname, username, email, address);
+	protected boolean addUser(/*Object obj, String firsname, String lastname, String username, String email, String address*/) {
+		while(employee instanceof Employee) {
+			employee = add_employee(/*firsname, lastname, username, email, address*/);
 			System.out.println("Added employee inside supervisor....");
 			return true;
 		}

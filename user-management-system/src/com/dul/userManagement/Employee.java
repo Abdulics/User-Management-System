@@ -1,6 +1,6 @@
 package com.dul.userManagement;
 
-public class Employee extends Supervisor{
+public class Employee extends User{
 
 	public Employee() {
 		//super();

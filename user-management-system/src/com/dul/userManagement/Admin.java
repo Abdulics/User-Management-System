@@ -2,9 +2,28 @@ package com.dul.userManagement;
 
 public class Admin extends User {
 
-	public Admin(String firsname, String lastname, String username, String email, String address) {
-		this.firstName = firsname;
-		this.lastName = lastname;
+	public Admin(Supervisor supervisor, String firstName, String lastName, String username, String email, String address) {
+		this.supervisor = supervisor;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.email = email;
+		this.address = address;
+	}
+
+	public Admin(Employee employee, String firstName, String lastName, String username, String email, String address) {
+		this.employee = employee;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.email = email;
+		this.address = address;
+	}
+
+	public Admin(Admin admin, String firstName, String lastName, String username, String email, String address) {
+		this.admin = admin;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.username = username;
 		this.email = email;
 		this.address = address;
@@ -16,7 +35,7 @@ public class Admin extends User {
 	private Supervisor supervisor;
 	private Employee employee;
 
-	private Object add_supervisor(/*String firsname, String lastname, String username, String email, String address*/) {
+	private Supervisor add_supervisor(/*String firsname, String lastname, String username, String email, String address*/) {
 		supervisor = new Supervisor();
 		supervisor.setFirstName(firstName);
 		supervisor.setLastName(lastName);
@@ -24,46 +43,45 @@ public class Admin extends User {
 		supervisor.setAddress(address);
 		supervisor.setEmail(email);
 		supervisor.setPassword(this.password);
-		System.out.println("Inside add supp in Admin" + supervisor.toString());
+		System.out.println("Inside add supp in Admin " + supervisor.toString());
 		return supervisor;
 	}
 
-	protected Object add_employee(String firsname, String lastname, String username, String email, String address) {
+	Employee add_employee(/*String firsname, String lastname, String username, String email, String address*/) {
 
 		employee = new Employee();
-		employee.setFirstName(firsname);
-		employee.setLastName(lastname);
+		employee.setFirstName(firstName);
+		employee.setLastName(lastName);
 		employee.setUsername(username);
 		employee.setAddress(address);
 		employee.setEmail(email);
 		employee.setPassword(this.password);
-		System.out.println("Inside add empl in Admin" + employee.toString());
+		System.out.println("Inside add empl in Admin " + employee.toString());
 		return employee;
 	}
 
-	private Object add_admin(String firsname, String lastname, String username, String email, String address) {
+	private Admin add_admin(/*String firsname, String lastname, String username, String email, String address*/) {
 		admin = new Admin();
-		admin.setFirstName(firsname);
-		admin.setLastName(lastname);
+		admin.setFirstName(firstName);
+		admin.setLastName(lastName);
 		admin.setUsername(username);
 		admin.setAddress(address);
 		admin.setEmail(email);
 		admin.setPassword(this.password);
-		System.out.println("Inside add admin in Admin" + admin.toString());
+		System.out.println("Inside add admin in Admin " + admin.toString());
 		return admin;
 	}
 
-	@Override
-	protected boolean addUser(Object obj, String firsname, String lastname, String username, String email,
-			String address) {
-		if (obj instanceof Employee) {
-			add_employee(firsname, lastname, username, email, address);
+	protected boolean addUser(/*Object obj, String firtsname, String lastname, String username, String email,
+			String address*/) {
+		if (employee instanceof Employee) {
+			add_employee(/*firtsname, lastname, username, email, address*/);
 			System.out.println("Added employee....");
-		} else if (obj instanceof Supervisor) {
-			add_supervisor(/*firsname, lastname, username, email, address*/);
+		} else if (supervisor instanceof Supervisor) {
+			add_supervisor(/*firtsname, lastname, username, email, address*/);
 			System.out.println("Added supervisor......");
-		} else if (obj instanceof Admin) {
-			add_admin(firsname, lastname, username, email, address);
+		} else if (admin instanceof Admin) {
+			add_admin(/*firtsname, lastname, username, email, address*/);
 			System.out.println("Added an admin......");
 		} else {
 			System.out.println("nothing was added");
@@ -110,7 +128,6 @@ public class Admin extends User {
 
 	void setPassword(String password) {
 		this.password = password;
-
 	}
 
 	String getFirstName() {
