@@ -3,17 +3,9 @@ package com.dul.userManagement;
 public class App {
 
 	public static void main(String[] args) {
-		HelperClass h = new HelperClass();
-		S w = new S();
-		A e1 = new A(w,"supervisor", "Omar", "aomar1", "abdul@dul.com", "123 1 st");
-		U u = new S();
-		u.addUser();
-		Employee e = new Employee(/*"Abdul", "Omar", "aomar1", "abdul@dul.com", "123 1 st"*/);
-		Supervisor s = new Supervisor(e,"employeesuper", "Omar", "aomar1", "abdul@dul.com", "123 1 st");
-		s.addUser();
-//		Supervisor s1 = new Supervisor();
-//		Employee e1 = new Employee();
-//		Admin a1 = new Admin();
+// 		Supervisor s1 = new Supervisor();
+// 		Employee e1 = new Employee();
+// 		Admin a1 = new Admin();
 		Admin a = new Admin(e,"employeeadmin", "Omar", "aomar1", "abdul@dul.com", "123 1 st");
 		a.addUser();
 		Admin b = new Admin(s,"supervisor", "Omar", "aomar1", "abdul@dul.com", "123 1 st");
