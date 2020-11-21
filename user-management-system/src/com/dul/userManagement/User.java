@@ -10,6 +10,5 @@ public abstract class User {
 		public String report;
 		
 		abstract String[] getProfile();
-
 		
 }
