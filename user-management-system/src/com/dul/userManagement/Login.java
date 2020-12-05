@@ -1,6 +1,7 @@
 package com.dul.userManagement;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -23,6 +24,7 @@ public class Login extends HttpServlet {
 	
 	@Resource(name="jdbc/management-system")
 	private DataSource dataSource;
+	private User user;
 	
 	@Override
 	public void init() throws ServletException {
@@ -41,7 +43,33 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		String theCommand = request.getParameter("command");
+		
+		// if the command is missing, then default to listing students
+		
+		switch (theCommand) {
+		
+		case "LOGIN":
+			login(request, response);
+			break;
+			
+		case "EDIT":
+			editable(request, response);
+			break;
+			
+		case "UPDATE":
+			updateinfo(request, response);
+			break;
+			
+		case "!EDIT":
+			System.out.println("Not edit executed.");
+			NotEditable(request, response);
+			break;
+			}
+	}
+	
+	private void login(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession(true);
 		String uname = request.getParameter("username");
 		String pass = request.getParameter("password");
 		String page;
@@ -58,19 +86,88 @@ public class Login extends HttpServlet {
 		}
 	}
 	
+	private void updateinfo(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		RequestDispatcher dispatcher;
+		try {
+			if(session.getAttribute("edit") == null) {
+					System.out.println("Edit attribute is created..");
+					session.setAttribute("edit", true);
+					dispatcher = request.getRequestDispatcher("/profile.jsp");
+					dispatcher.forward(request, response);
+			    } else {
+			    	System.out.println("Edit attribute exist..");
+			 String fname = (String) request.getAttribute("fname");
+			 String lname = (String) session.getAttribute("lname");
+			 String email = (String) session.getAttribute("email");
+			 int em_id = (int) session.getAttribute("em_id");
+			 String pass = (String) session.getAttribute("pass");
+			msd.updateinfo(fname, lname, email, em_id, pass);
+			session.removeAttribute("edit");
+			dispatcher = request.getRequestDispatcher("/profile.jsp");
+			dispatcher.forward(request, response);
+			
+}
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void editable(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		RequestDispatcher dispatcher;
+		try {
+			if(session.getAttribute("edit") == null) {
+				System.out.println("Edit attribute is created..");
+				session.setAttribute("edit", true);
+				dispatcher = request.getRequestDispatcher("/profile.jsp");
+				dispatcher.forward(request, response);
+			}
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void NotEditable(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		RequestDispatcher dispatcher;
+		try {
+			session.removeAttribute("edit");
+			dispatcher = request.getRequestDispatcher("/profile.jsp");
+			dispatcher.forward(request, response);
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	private void cheker(HttpServletRequest request, HttpServletResponse response, HttpSession session, String page, boolean boo) {
 		String str = "";
 		try {
-			if(boo == true) {
+			if(boo = true) {
 				 System.out.println("This first if was passed " + boo);
-				 //str = "Logged in suceesfully....";
-				 //request.setAttribute("msg",str);
+				 String name = msd.getUser().firstName;
+				 String lname = msd.getUser().lastName;
+				 String email = msd.getUser().email;
+				 String uname = msd.getUser().username;
+				 int em_id = msd.getUser().em_id;
+				 String pass = msd.getUser().password;
 				 session.setAttribute("logged",boo);
+				 session.setAttribute("name",name);
+				 session.setAttribute("lname",lname);
+				 session.setAttribute("email",email);
+				 session.setAttribute("uname",uname);
+				 session.setAttribute("pass",pass);
+				 session.setAttribute("em_id",em_id);
 				 response.sendRedirect(page);
 				 //RequestDispatcher dispatcher = request.getRequestDispatcher("/"+page);
 				 //dispatcher.forward(request, response);
 			 } 
-			  if(boo != true) {
+			  if(boo = false) {
 				 RequestDispatcher dispatcher = request.getRequestDispatcher("/in.html");
 				 dispatcher.forward(request, response);
 			  }

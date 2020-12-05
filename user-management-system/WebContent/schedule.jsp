@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="/header.jspf" %>
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -27,19 +28,12 @@
 <title>Insert title here</title>
 </head>
 <body class="w3-theme-l5">
+
+	<% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
 	<c:if test="${logged == null }">
 		<c:redirect url="in.html"></c:redirect>
 	</c:if>
 	<!-- Top container -->
-	<div class="w3-bar w3-top w3-black w3-large" style="z-index: 4">
-		<button
-			class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
-			onclick="w3_open();">
-			<i class="fa fa-bars"></i>  Menu
-		</button>
-		<span class="w3-bar-item w3-right">Logo</span>
-	</div>
-
 	<div id="schedule" class="tabcontent" style="margin-left: 0px; margin-top: 43px;">
 		<h3>Weekly Schedule</h3>
 		<p>These are the days you are scheduled to work this week.</p>

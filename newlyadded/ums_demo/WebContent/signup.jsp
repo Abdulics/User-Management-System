@@ -7,6 +7,6 @@
 <title>Signup</title>
 </head>
 <body>
-
+welcome humanoid.
 </body>
 </html>

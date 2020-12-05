@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="/header.jspf" %>
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -90,18 +91,15 @@ body {
 
 </head>
 <body class="w3-theme-l5">
+
+	<% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); //http 1.1
+	   response.setHeader("Pragma", "no-cache"); //http 1.0
+	%>
 	<c:if test="${logged == null }">
 		<c:redirect url="in.html"></c:redirect>
 	</c:if>
 	<!-- Top container -->
-	<div class="w3-bar w3-top w3-black w3-large" style="z-index: 4">
-		<button
-			class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
-			onclick="w3_open();">
-			<i class="fa fa-bars"></i>  Menu
-		</button>
-		<span class="w3-bar-item w3-right">Logo</span>
-	</div>
+	
 
 	<nav class="w3-sidebar w3-collapse w3-white w3-animate-left"
 		style="z-index: 3; width: 300px;" id="mySidebar">
@@ -112,7 +110,7 @@ body {
 					style="width: 46px">
 			</div>
 			<div class="w3-col s8 w3-bar">
-				<span>Welcome, <strong>Mike</strong></span><br> <a href="#"
+				<span>Welcome, <strong><c:out value="${name }"></c:out></strong></span><br> <a href="profile.jsp"
 					class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
 				<div class="w3-dropdown-content w3-card-4 w3-bar-block"
 					style="width: 300px">

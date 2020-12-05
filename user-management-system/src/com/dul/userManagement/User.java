@@ -7,6 +7,7 @@ public class User {
 	public String username;
 	public String password;
 	public String email;
+	public int em_id;
 	private String report;
 	private Object profile;
 
@@ -82,6 +83,14 @@ public class User {
 
 	public void setProfile(Object profile) {
 		this.profile = profile;
+	}
+	
+	public int getEm_id() {
+		return em_id;
+	}
+
+	public void setEm_id(int em_id) {
+		this.em_id = em_id;
 	}
 
 	

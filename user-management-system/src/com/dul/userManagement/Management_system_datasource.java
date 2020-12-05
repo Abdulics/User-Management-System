@@ -15,9 +15,17 @@ public class Management_system_datasource {
 	private String dusername = "";
 	private String dpass = "";
 	private String prev = "";
+	private int em_id;
+	private final String UPDATE = "update user_information "
+			+ "set first_name=?, last_name=?, email=? "
+			+ "password=? where id=?";
 
 	public Management_system_datasource(DataSource theDataSource) {
 		dataSource = theDataSource;
+	}
+	
+	public User getUser() {
+		return user;
 	}
 	
 //	public List<Student> getStudents() throws Exception {
@@ -63,6 +71,7 @@ public class Management_system_datasource {
 //			close(myConn, myStmt, myRs);
 //		}		
 //	}
+
 
 	private void close(Connection myConn, Statement myStmt, ResultSet myRs) {
 
@@ -261,13 +270,16 @@ public class Management_system_datasource {
 			// process result set
 			while (myRs.next()) {
 				System.out.println("Inside Result set while loop....");
-				// retrieve data from result set row
+				// retrieving data from result set row
 				dusername = myRs.getString("username");
 				dpass = myRs.getString("password");
 				prev = myRs.getString("prev");
-				System.out.println("prevelege is: " + prev);
+				em_id = myRs.getInt("em_id");
+				System.out.println("prevelege is: " + em_id);
+				//setting to retrieve user informations later.
 				user.setUsername(dusername);
-				user.setPassword(dpass);	
+				user.setPassword(dpass);
+				profile(em_id);
 			}
 								
 		} catch (SQLException e) {
@@ -278,6 +290,46 @@ public class Management_system_datasource {
 			close(myConn, myStmt, myRs);
 		}	
 	}
+	
+	//
+	private User profile(int em_id) {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		
+		try {
+			// get a connection
+			myConn = dataSource.getConnection();
+			
+			// create sql statement
+			String sql = "select * from user_information where em_id=?";
+			
+			myStmt = myConn.prepareStatement(sql);
+			
+			myStmt.setInt(1, em_id);
+			// execute query
+			System.out.println("Prepared statement is: "+ myStmt);
+			myRs = myStmt.executeQuery();
+			System.out.println("Result set executed.......");
+			// process result set
+			while (myRs.next()) {
+				System.out.println("Inside Result set while loop....");
+				// retrieving data from result set row
+				user.setFirstName(myRs.getString("firstname"));
+				user.setLastName(myRs.getString("lastname"));
+				user.setEmail(myRs.getString("email"));
+				user.setEm_id(em_id);
+			}
+								
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// close JDBC objects
+			close(myConn, myStmt, myRs);
+		}	
+		return user;
+	}
 
 	public boolean adminsignin(String uname, String pass) {
 		signin(uname, pass);
@@ -287,6 +339,36 @@ public class Management_system_datasource {
 		return false;
 	}
 	
+	public boolean updateinfo(String fname, String lname, String email, int em_id2, String pass) {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		
+		try {
+			// get a connection
+			myConn = dataSource.getConnection();
+			myStmt = myConn.prepareStatement(UPDATE);
+			myStmt.setString(1, fname);
+			myStmt.setString(2, lname);
+			myStmt.setString(3, email);
+			myStmt.setString(4, pass);
+			myStmt.setInt(5, em_id);
+			System.out.println("Pasword inside update is: " + pass);
+			System.out.println("Prepared statement inside update is: " + myStmt);
+			// execute query
+			myStmt.executeUpdate();
+			System.out.println("Update info was executed....");
+								
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// close JDBC objects
+			close(myConn, myStmt, myRs);
+		}	
+		
+		return false;	
+	}
 	public boolean signup(String fname, String lname, String uname, String pass, String email, String employeeid) {
 		String sql = "insert into user_information "
 				   + "(firstname, lastname, email, em_id) "
