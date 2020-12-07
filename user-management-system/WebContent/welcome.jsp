@@ -27,53 +27,7 @@ html, body, h1, h2, h3, h4, h5 {
 		<c:redirect url="in.html"></c:redirect>
 	</c:if>
 	<!-- Top container -->
-	<nav class="w3-sidebar w3-collapse w3-white w3-animate-left"
-		style="z-index: 3; width: 300px;" id="mySidebar">
-		<br>
-		<div class="w3-container w3-row">
-			<div class="w3-col s4">
-				<img src="/w3images/avatar2.png" class="w3-circle w3-margin-right"
-					style="width: 46px">
-			</div>
-			<div class="w3-col s8 w3-bar">
-				<span>Welcome, <strong><c:out value="${name }"></c:out></strong></span><br> <a href="profile.jsp"
-					class="w3-bar-item w3-button"><i class="fa fa-user"></i></a> 
-					<div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
-					<a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
-					</div>
-					
-	<div class="w3-dropdown-hover w3-hide-small">
-    <button class="w3-button w3-padding-large" ><i class="fa fa-cog"></i></button>    
-    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px">
-      <a href="#" class="w3-bar-item w3-button">Edit Profile</a>
-      <a href="logout" class="w3-bar-item w3-button">Logout</a>
-    </div>
-  </div>
-			</div>
-		</div>
-		<hr>
-		<div class="w3-container">
-			<h5>Dashboard</h5>
-		</div>
-		<div class="w3-bar-block">
-			<a href="#"
-				class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
-				onclick="w3_close()" title="close menu"><i
-				class="fa fa-remove fa-fw"></i>  Close Menu</a> <a href="#"
-				class="w3-bar-item w3-button w3-padding w3-blue"><i
-				class="fa fa-users fa-fw"></i>  Overview</a> <a href="#"
-				class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-users fa-fw"></i>  User list</a> <a href="#"
-				class="w3-bar-item w3-button"><i class="fa fa-user"></i> Add
-				User</a> <a href="#" class="w3-bar-item w3-button w3-padding"><i
-				class="fa fa-bell"></i> Notifications</a>
-		</div>
-	</nav>
-
-	<!-- Overlay effect when opening sidebar on small screens -->
-	<div class="w3-overlay w3-hide-large w3-animate-opacity"
-		onclick="w3_close()" style="cursor: pointer" title="close side menu"
-		id="myOverlay"></div>
+	<%@ include file="/welcomeBar.jspf" %>
 
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">

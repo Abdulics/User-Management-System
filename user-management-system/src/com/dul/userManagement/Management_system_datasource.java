@@ -275,7 +275,7 @@ public class Management_system_datasource {
 				dpass = myRs.getString("password");
 				prev = myRs.getString("prev");
 				em_id = myRs.getInt("em_id");
-				System.out.println("prevelege is: " + em_id);
+				System.out.println("employee id is: " + em_id);
 				//setting to retrieve user informations later.
 				user.setUsername(dusername);
 				user.setPassword(dpass);
@@ -340,6 +340,7 @@ public class Management_system_datasource {
 	}
 	
 	public boolean updateinfo(String fname, String lname, String email, int em_id2, String pass) {
+		System.out.println("Update info called..");
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRs = null;
@@ -352,7 +353,7 @@ public class Management_system_datasource {
 			myStmt.setString(2, lname);
 			myStmt.setString(3, email);
 			myStmt.setString(4, pass);
-			myStmt.setInt(5, em_id);
+			myStmt.setInt(5, em_id2);
 			System.out.println("Pasword inside update is: " + pass);
 			System.out.println("Prepared statement inside update is: " + myStmt);
 			// execute query

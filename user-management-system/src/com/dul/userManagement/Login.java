@@ -53,6 +53,10 @@ public class Login extends HttpServlet {
 			login(request, response);
 			break;
 			
+		case "LOGOUT":
+			logout(request, response);
+			break;
+			
 		case "EDIT":
 			editable(request, response);
 			break;
@@ -86,28 +90,33 @@ public class Login extends HttpServlet {
 		}
 	}
 	
+	private void logout(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		try {
+			session.removeAttribute("logged");
+			session.invalidate();
+			response.sendRedirect("in.html");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private void updateinfo(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		RequestDispatcher dispatcher;
 		try {
-			if(session.getAttribute("edit") == null) {
-					System.out.println("Edit attribute is created..");
-					session.setAttribute("edit", true);
-					dispatcher = request.getRequestDispatcher("/profile.jsp");
-					dispatcher.forward(request, response);
-			    } else {
-			    	System.out.println("Edit attribute exist..");
-			 String fname = (String) request.getAttribute("fname");
-			 String lname = (String) session.getAttribute("lname");
-			 String email = (String) session.getAttribute("email");
-			 int em_id = (int) session.getAttribute("em_id");
+			 System.out.println("Edit attribute exist..");
+			 String fname = request.getParameter("fname");
+			 String lname =  request.getParameter("lname");
+			 String email = request.getParameter("email");
+			 int em_id = (Integer) session.getAttribute("em_id");
 			 String pass = (String) session.getAttribute("pass");
-			msd.updateinfo(fname, lname, email, em_id, pass);
+			 System.out.println("em_d while editing: " + em_id);
+			 msd.updateinfo(fname, lname, email, em_id, pass);
 			session.removeAttribute("edit");
 			dispatcher = request.getRequestDispatcher("/profile.jsp");
 			dispatcher.forward(request, response);
-			
-}
+		
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -121,6 +130,7 @@ public class Login extends HttpServlet {
 		try {
 			if(session.getAttribute("edit") == null) {
 				System.out.println("Edit attribute is created..");
+				System.out.println("em_d before editing is : " + session.getAttribute("em_id"));
 				session.setAttribute("edit", true);
 				dispatcher = request.getRequestDispatcher("/profile.jsp");
 				dispatcher.forward(request, response);
