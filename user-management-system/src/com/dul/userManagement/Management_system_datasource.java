@@ -17,8 +17,8 @@ public class Management_system_datasource {
 	private String prev = "";
 	private int em_id;
 	private final String UPDATE = "update user_information "
-			+ "set first_name=?, last_name=?, email=? "
-			+ "password=? where id=?";
+			+ "set firstname=?, lastname=?, email=? "
+			+ "where em_id=?";
 
 	public Management_system_datasource(DataSource theDataSource) {
 		dataSource = theDataSource;
@@ -339,7 +339,7 @@ public class Management_system_datasource {
 		return false;
 	}
 	
-	public boolean updateinfo(String fname, String lname, String email, int em_id2, String pass) {
+	public boolean updateinfo(String fname, String lname, String email, int em_id2) {
 		System.out.println("Update info called..");
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -352,9 +352,8 @@ public class Management_system_datasource {
 			myStmt.setString(1, fname);
 			myStmt.setString(2, lname);
 			myStmt.setString(3, email);
-			myStmt.setString(4, pass);
-			myStmt.setInt(5, em_id2);
-			System.out.println("Pasword inside update is: " + pass);
+			//myStmt.setString(4, pass);
+			myStmt.setInt(4, em_id2);
 			System.out.println("Prepared statement inside update is: " + myStmt);
 			// execute query
 			myStmt.executeUpdate();

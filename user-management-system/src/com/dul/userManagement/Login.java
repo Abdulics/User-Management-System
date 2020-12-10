@@ -112,7 +112,7 @@ public class Login extends HttpServlet {
 			 int em_id = (Integer) session.getAttribute("em_id");
 			 String pass = (String) session.getAttribute("pass");
 			 System.out.println("em_d while editing: " + em_id);
-			 msd.updateinfo(fname, lname, email, em_id, pass);
+			 msd.updateinfo(fname, lname, email, em_id);
 			session.removeAttribute("edit");
 			dispatcher = request.getRequestDispatcher("/profile.jsp");
 			dispatcher.forward(request, response);
