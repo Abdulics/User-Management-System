@@ -3,6 +3,7 @@ package com.dul.userManagement;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
+import java.util.LinkedList;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
@@ -49,26 +50,30 @@ private Management_system_datasource msd;
 		String lname = request.getParameter("lastname");
 		String email = request.getParameter("email");
 		String employeeid = request.getParameter("employeeid");
-		boolean boo = msd.signup(fname, lname, uname, pass, email, employeeid);
+		LinkedList<String> list = new LinkedList<String>();
+		list.add(fname);
+		list.add(lname);
+		list.add(email);
+		list.add(employeeid);
+		list.add(uname);
+		list.add(pass);
+		boolean boo = msd.signup(fname, lname, uname, pass, email, Integer.parseInt(employeeid));
 		if (boo) {
-		response.sendRedirect("emp_welcom.jsp");
-		} else {
-			session = request.getSession(false);
 			try {
 				response.setContentType("text/html");
 				PrintWriter writer = response.getWriter();
 				writer.println("<html><body>");
-				if (session == null) {
-					writer.println("You are not logged in");
-				} else {
-					writer.println("Thank you, you are already logged in");
-					writer.println("Here is the data in your session");
-					Enumeration names = session.getAttributeNames();
+					writer.println("Thanks for signing up");
+					writer.println("<br>");
+					writer.println("Here is the data you submitted");
+					Enumeration names = request.getAttributeNames();
+					System.out.println(names);
+					int index = 0;
 					while (names.hasMoreElements()) {
 						String name = (String) names.nextElement();
-						Object value = session.getAttribute(name);
+						String value = list.get(index);
 						writer.println("<p>name=" + name + " value=" + value);
-					}
+						index++;
 				}
 				writer.println("<p><a href=\"in.html\">Return" + "</a> to login page");
 				writer.println("</body></html>");

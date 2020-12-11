@@ -172,38 +172,38 @@ public class Management_system_datasource {
 //		}
 //	}
 //
-//	public void updateStudent(Student theStudent) throws Exception {
-//		
-//		Connection myConn = null;
-//		PreparedStatement myStmt = null;
-//
-//		try {
-//			// get db connection
-//			myConn = dataSource.getConnection();
-//			
-//			// create SQL update statement
-//			String sql = "update student "
-//						+ "set first_name=?, last_name=?, email=? "
-//						+ "where id=?";
-//			
-//			// prepare statement
-//			myStmt = myConn.prepareStatement(sql);
-//			
-//			// set params
-//			myStmt.setString(1, theStudent.getFirstName());
-//			myStmt.setString(2, theStudent.getLastName());
-//			myStmt.setString(3, theStudent.getEmail());
-//			myStmt.setInt(4, theStudent.getId());
-//			
-//			// execute SQL statement
-//			myStmt.execute();
-//		}
-//		finally {
-//			// clean up JDBC objects
-//			close(myConn, myStmt, null);
-//		}
-//	}
-//
+	public void updateStudent(User theuser) throws Exception {
+		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+
+		try {
+			// get db connection
+			myConn = dataSource.getConnection();
+			
+			// create SQL update statement
+			String sql = "update student "
+						+ "set first_name=?, last_name=?, email=? "
+						+ "where id=?";
+			
+			// prepare statement
+			myStmt = myConn.prepareStatement(sql);
+			
+			// set params
+			myStmt.setString(1, theuser.getFirstName());
+			myStmt.setString(2, theuser.getLastName());
+			myStmt.setString(3, theuser.getEmail());
+			myStmt.setInt(4, theuser.getEm_id());
+			
+			// execute SQL statement
+			myStmt.execute();
+		}
+		finally {
+			// clean up JDBC objects
+			close(myConn, myStmt, null);
+		}
+	}
+
 //	public void deleteStudent(String theStudentId) throws Exception {
 //
 //		Connection myConn = null;
@@ -369,10 +369,50 @@ public class Management_system_datasource {
 		
 		return false;	
 	}
-	public boolean signup(String fname, String lname, String uname, String pass, String email, String employeeid) {
-		String sql = "insert into user_information "
+	public boolean signup(String fname, String lname, String uname, String pass, String email, int em_id) {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		
+		String sql1 = "insert into user_information "
 				   + "(firstname, lastname, email, em_id) "
 				   + "values (?, ?, ?, ?)";
+		String sql2 = "insert into login "
+				   + "(em_id, username, password) "
+				   + "values (?, ?, ?)";
+		
+		try {
+			// get a connection
+			myConn = dataSource.getConnection();
+			myStmt = myConn.prepareStatement(sql1);
+			myStmt.setString(1, fname);
+			myStmt.setString(2, lname);
+			myStmt.setString(3, email);
+			myStmt.setInt(4, em_id);
+			System.out.println("Prepared statement inside signup is: " + myStmt);
+			// execute query
+			myStmt.executeUpdate();
+			close(myConn, myStmt, myRs);
+			//Getting another connection
+			myConn = dataSource.getConnection();
+			myStmt = myConn.prepareStatement(sql2);
+			myStmt.setInt(1, em_id);
+			myStmt.setString(2, uname);
+			myStmt.setString(3, pass);
+			System.out.println("Prepared statement inside signup for login: " + myStmt);
+			int boo = myStmt.executeUpdate();
+			System.out.println("Value of boo is: " + boo);
+			if (boo > 0) {
+				return true;
+			}
+								
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			// close JDBC objects
+			close(myConn, myStmt, myRs);
+		}
 		return false;
 	}
 }
