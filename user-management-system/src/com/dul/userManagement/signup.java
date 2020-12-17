@@ -51,12 +51,12 @@ private Management_system_datasource msd;
 		String email = request.getParameter("email");
 		String employeeid = request.getParameter("employeeid");
 		LinkedList<String> list = new LinkedList<String>();
-		list.add(fname);
-		list.add(lname);
-		list.add(email);
-		list.add(employeeid);
-		list.add(uname);
-		list.add(pass);
+		list.add(0,fname);
+		list.add(1,lname);
+		list.add(2,email);
+		list.add(3,employeeid);
+		list.add(4,uname);
+		list.add(5,pass);
 		boolean boo = msd.signup(fname, lname, uname, pass, email, Integer.parseInt(employeeid));
 		if (boo) {
 			try {
@@ -66,15 +66,18 @@ private Management_system_datasource msd;
 					writer.println("Thanks for signing up");
 					writer.println("<br>");
 					writer.println("Here is the data you submitted");
-					Enumeration names = request.getAttributeNames();
-					System.out.println(names);
+					Enumeration names = session.getAttributeNames();
+					System.out.println(names.toString());
 					int index = 0;
-					while (names.hasMoreElements()) {
-						String name = (String) names.nextElement();
-						String value = list.get(index);
-						writer.println("<p>name=" + name + " value=" + value);
-						index++;
-				}
+					String name = (String) names.toString();
+					String value = list.get(index);
+					writer.println("Firstname: "+list.get(0) +"<br>");
+					writer.println("LastName: "+list.get(1)+"<br>");
+					writer.println("Username: "+list.get(4)+"<br>");
+					writer.println("Email: "+list.get(2)+"<br>");
+					writer.println("Password: "+list.get(5)+"<br>");
+					writer.println("Employee id: "+list.get(3)+"<br>");
+					
 				writer.println("<p><a href=\"in.html\">Return" + "</a> to login page");
 				writer.println("</body></html>");
 				writer.close();

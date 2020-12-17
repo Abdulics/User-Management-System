@@ -56,6 +56,10 @@ form.sign-up-form {
   z-index: 1;
 }
 
+form.home-form {
+  z-index: 1;
+}
+
 form.sign-in-form {
   z-index: 2;
 }
@@ -372,7 +376,6 @@ form.sign-in-form {
     transform: translate(-50%, 0);
   }
 }
-
 @media (max-width: 570px) {
   form {
     padding: 0 1.5rem;

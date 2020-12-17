@@ -18,7 +18,7 @@ html, body, h1, h2, h3, h4, h5 {
 </style>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Welcome</title>
 
 <style>
 * {

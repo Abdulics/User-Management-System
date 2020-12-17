@@ -6,7 +6,7 @@
  id="WebApp_ID" version="4.0">
   <display-name>user-management-system</display-name>
   <welcome-file-list>
-    <welcome-file>landing.html</welcome-file>
+    <welcome-file>index.html</welcome-file>
   </welcome-file-list>
   
   

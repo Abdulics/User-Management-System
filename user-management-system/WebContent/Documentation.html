@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+<h1> User-Management-System(UMS) </h1>
+<p>A simple user management system(UMS) for a small team or company to make shift report, request 
+vacation and view working schedule, clock in and out, send an internal email and viewing other team members report. </p>
+
+<h1>Purpose </h1>
+<p>To help a small team of employees/ company managing time sheet for their employees. To see shift 
+report from employees, approve employees requests including shift change, time off and etc. </p>
+
+<h1>Product Features </h1>
+<ul>
+
+<h3>For Admins </h3>
+  <li>Log-in</li>
+  <li>Log-out</li>
+  <li>reset password</li>
+  <li>Add new users</li>
+  <li>Remove users</li>
+  <li>Update user information </li>
+  <li>View all reports</li>
+  <li>Make a shift report</li>
+  <li>Approve requests</li>
+</ul>
+
+<ul>
+<h3>For Normal Users </h3>
+  <li>Log-in</li>
+  <li>Log-out</li>
+  <li>reset password</li>
+  <li>Update user information </li>
+  <li>View all reports</li>
+  <li>Make a shift report</li>
+  <li>Send requests</li>
+  <li>Clock-in and out</li>
+</ul>
+
+<h1>Application Structure </h1>
+
+<p>The structure of this simple web app follows the traditional organizations hierarchy. There is a two types 
+of users. Supervisor/Admin and normal user. </p>
+
+<dl>
+<h3>Users</h3>
+<p><mark>(Note: Username for the Admin is ‘admin’; password is ‘password’. Username for admin cannot be changed)</mark></p>
+<b><dt>Supervisor/Admin</dt></b>
+<dd> - Also known as a super user. A super user in this simple web app, is the supervisor of the organization/team/company. 
+A super user is given the <b>username: admin</b> and <b>password: password </b>. No one can have admin username except for 
+to the dedicated admin or signup as an admin. The Admin has the highest privilege, she/he can add and remove users. He/she 
+can update every user information except for the password and username.<br />
+</dd>
+<b><dt>Normal User</dt></b>
+<dd> - Normal users are employees or non admin team members. They have the least privilege, they can view shift reports from other team members, clock-in and out, request time off, view their weekly schedule and request for a schedule change. Normal users can also update their user information including first and last name. Here it's assumed that there is an hypothetical process/approval for updating employees informations, and for that reason, if a user update their information, they will have to logout and log back in with their new credentials and everything will look updated.
+</dd>
+</dl>
+
+<h1>Technologies used: </h1>
+
+<ul>
+<li>HTML 5</li>
+
+<li>w3css.com</li>
+
+<li>JavaScript</li>
+
+<li>SQL</li>
+
+<li>Jsp</li>
+
+<li>Expression Language</li>
+
+<li>Java</li>
+<li>Servlet</li>
+<li>Internet connection to get w3css.</li>
+</ul>
+
+
+<h1>Software Requirement: </h1>
+
+<ul>
+<li>Tomcat server v9 or Widlfly 20 etc.</li>
+
+<li>MySQL for database </li>
+
+<li>Web Browser supporting HTML5 : Google Chrome(recommended) / Firefox </li>
+</ul>
+
+<h1>Step-wise Instructions: </h1>
+<h3>Setting up</h3>
+<ul>
+<li>Make sure you have all the above software downloaded on the machine intended to run this wed up</li>
+<li>Open the database_Creator_with_Demo.sql file given in the zip folder. You can also find this file at Webcontent/sql-scripts. Open or run the script inside this file
+ in your sql workbench or on terminal to create the required database.</li>
+ <li>The script creates a few demo users with all the information needed to login. and an admin username and password </li>
+<li>Setup your own password for your database by configuring the password and connection pool under the webcontent/META-INF/context.xml.</li>
+<li> If password for the database is not configured correctly at webcontent/META-INF/context.xml, the app will not works</li>
+<li>Deploy the war file on your server</li>
+</ul>
+
+<h1>Resetting user password</h1>
+<p>Here we assume the user's employee id is a secret to them and no one else knows it.
+To reset a password, the user must know their username and employee id:</p>
+<ul>
+<li> Click on reset password on the web GUI </li>
+<li> Input the requested information.</li>
+<p>If the passed username and employee id are correct, the password will be reset to the 
+new one. user should be able to login with their new credentials.</p>
+</ul>
+
+<h1>Viewing personal information </h1>
+<p>A user can view their personal information by clicking on the user icon at the top left 
+side of the web once they are signed in. There, the user should be able to view their profile 
+and edit if they wish by clicking on the edit button at the bottom of the page. 
+Updating profile also includes changing or resetting their password. As mention earlier, there is 
+an hypothetical process for validation of user information from a different vendor. So, user must 
+logout and log back in to see their most current updated informations.</p>
+<h1>Still under development </h1>
+<p>This user management system is a beta, it's still under development. There isn't much a user can do on the 
+page currently. Here are the implemented features: logging in, logging out, signing up, updating user information 
+and reseting password. All other features are there for display but they are not implemented yet.</p>
+
+</body>
+</html>

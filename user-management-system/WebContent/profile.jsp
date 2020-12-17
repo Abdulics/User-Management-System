@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="/header.jspf" %>
+<%@ include file="/header.jspf"%>
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -24,8 +24,8 @@
 	height: 350px;
 }
 
-input{
-border-style: none;
+input {
+	border-style: none;
 }
 </style>
 <meta charset="ISO-8859-1">
@@ -33,58 +33,59 @@ border-style: none;
 </head>
 <body class="w3-theme-l5">
 
-	<%
+		<%
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-	%>
+		response.setHeader("Pragma", "no-cache"); //http 1.0
+		%>
 	<c:if test="${logged == null }">
-		<c:redirect url="in.html"></c:redirect>
+		<c:redirect url="login.html"></c:redirect>
 	</c:if>
 
 	<!-- Top container -->
 
 	<c:if test="${edit == null }">
-	<form action="Login" method="post">
-	<input type="hidden" name="command" value="EDIT" />
-		<div id="schedule" class="tabcontent"
-			style="margin-left: 0px; margin-top: 43px;">
-			<h3>Personal info</h3>
-			
-			<table class="w3-table w3-striped w3-white">
-				<tr>
-					<td><b>First name</b></td>
-					<td><c:out value="${name }"></c:out></td>
-				</tr>
-				<tr>
-					<td><b>Last name</b></td>
-					<td><c:out value="${lname }"></c:out></td>
-				</tr>
-				<tr>
-					<td><b>Email</b></td>
-					<td><c:out value="${email }"></c:out></td>
-				</tr>
-				<tr>
-					<td><b>Employee Id</b></td>
-					<td><c:out value="${em_id }"></c:out></td>
-				</tr>
-				<tr>
-					<td><b>Username</b></td>
-					<td><c:out value="${uname }"></c:out></td>
-				</tr>
-				<tr>
-					<td><b>Password</b></td>
-					<td><c:out value="${pass }"></c:out></td>
-				</tr>
+		<form action="Login" method="post">
+			<input type="hidden" name="command" value="EDIT" />
+			<div id="schedule" class="tabcontent"
+				style="margin-left: 0px; margin-top: 43px;">
+				<h3>Personal info</h3>
 
-			</table>
-		</div>
-		<input class="w3-bar-item w3-button w3-padding w3-blue"
-								type="submit" value="Edit profile" />
-			</form>
-		
+				<table class="w3-table w3-striped w3-white">
+					<tr>
+						<td><b>First name</b></td>
+						<td><c:out value="${name }"></c:out></td>
+					</tr>
+					<tr>
+						<td><b>Last name</b></td>
+						<td><c:out value="${lname }"></c:out></td>
+					</tr>
+					<tr>
+						<td><b>Email</b></td>
+						<td><c:out value="${email }"></c:out></td>
+					</tr>
+					<tr>
+						<td><b>Employee Id</b></td>
+						<td><c:out value="${em_id }"></c:out></td>
+					</tr>
+					<tr>
+						<td><b>Username</b></td>
+						<td><c:out value="${uname }"></c:out></td>
+					</tr>
+					<tr>
+						<td><b>Password</b></td>
+						<td><c:out value="${pass }"></c:out></td>
+					</tr>
+
+				</table>
+			</div>
+			<input class="w3-bar-item w3-button w3-padding w3-blue" type="submit"
+				value="Edit profile" />
+		</form>
+
 	</c:if>
 
 	<c:if test="${edit}">
-	<div id="schedule" class="tabcontent"
+		<div id="schedule" class="tabcontent"
 			style="margin-left: 0px; margin-top: 43px;">
 			<form action="Login" method="post">
 				<h3>Edit Personal info</h3>
@@ -118,11 +119,11 @@ border-style: none;
 					type="submit" value="Update profile" />
 			</form>
 			<form action="Login" method="post">
-			<input type="hidden" name="command" value="!EDIT" />
-			<input class="w3-bar-item w3-button w3-padding w3-blue"
-								type="submit" value="Cancel Edit" />
+				<input type="hidden" name="command" value="!EDIT" /> <input
+					class="w3-bar-item w3-button w3-padding w3-blue" type="submit"
+					value="Cancel Edit" />
 			</form>
-			</div>
+		</div>
 	</c:if>
 
 

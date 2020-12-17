@@ -1,8 +1,6 @@
 package com.dul.userManagement;
 
 import java.io.IOException;
-import java.util.Enumeration;
-
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,14 +37,23 @@ public class Login extends HttpServlet {
 		}
 	}
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Do get called");
+		String theCommand = request.getParameter("id");
+		System.out.println("Param value is: " +theCommand);
+		// if the command is missing, then default to listing students
+		switch (theCommand) {
+		case "EDIT":
+			editable(request, response);
+			break;
+		}
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String theCommand = request.getParameter("command");
-		
-		// if the command is missing, then default to listing students
-		
+				
 		switch (theCommand) {
 		
 		case "LOGIN":
@@ -61,6 +68,12 @@ public class Login extends HttpServlet {
 			editable(request, response);
 			break;
 			
+		case "PASSRESET":
+			passwordReset(request, response);
+			break;
+		case "RESETPASS":
+			resetPassword(request, response);
+			break;
 		case "UPDATE":
 			updateinfo(request, response);
 			break;
@@ -72,6 +85,51 @@ public class Login extends HttpServlet {
 			}
 	}
 	
+	private void passwordReset(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		RequestDispatcher dispatcher;
+		try {
+			 System.out.println("Password resset called..");
+			 String username =  request.getParameter("username");
+			 String employeeId = request.getParameter("employeeid");
+			 Integer em_id = Integer.parseInt(employeeId);
+			 String password = request.getParameter("password");
+			 String newPassword = msd.updatePass(em_id, username, password);
+			 System.out.println("The new password is: "+newPassword);
+			 session.setAttribute("newPassword", newPassword);
+			dispatcher = request.getRequestDispatcher("/forgotpassword.jsp");
+			dispatcher.forward(request, response);
+		
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+		
+		private void resetPassword(HttpServletRequest request, HttpServletResponse response) {
+			HttpSession session = request.getSession();
+			RequestDispatcher dispatcher;
+			try {
+				 System.out.println("Password resset called..");
+				 String username =  request.getParameter("username");
+				 String employeeId = request.getParameter("employeeid");
+				 Integer em_id = Integer.parseInt(employeeId);
+				 String password = request.getParameter("password");
+				 String newPassword = msd.updatePass(em_id, username, password);
+				 System.out.println("The new password is: "+newPassword);
+				 session.setAttribute("newPassword", newPassword);
+				dispatcher = request.getRequestDispatcher("/resetPassword.jsp");
+				dispatcher.forward(request, response);
+			
+			} catch (ServletException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		
+	}
+
 	private void login(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession(true);
 		String uname = request.getParameter("username");
@@ -95,7 +153,7 @@ public class Login extends HttpServlet {
 		try {
 			session.removeAttribute("logged");
 			session.invalidate();
-			response.sendRedirect("in.html");
+			response.sendRedirect("login.html");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -158,8 +216,8 @@ public class Login extends HttpServlet {
 	private void cheker(HttpServletRequest request, HttpServletResponse response, HttpSession session, String page, boolean boo) {
 		String str = "";
 		try {
-			if(boo = true) {
-				 System.out.println("This first if was passed " + boo);
+			if(boo == true) {
+				 System.out.println("This first if was passed inside checker" + boo);
 				 String name = msd.getUser().firstName;
 				 String lname = msd.getUser().lastName;
 				 String email = msd.getUser().email;
@@ -177,8 +235,8 @@ public class Login extends HttpServlet {
 				 //RequestDispatcher dispatcher = request.getRequestDispatcher("/"+page);
 				 //dispatcher.forward(request, response);
 			 } 
-			  if(boo = false) {
-				 RequestDispatcher dispatcher = request.getRequestDispatcher("/in.html");
+			  if(boo == false) {
+				 RequestDispatcher dispatcher = request.getRequestDispatcher("/login.html");
 				 dispatcher.forward(request, response);
 			  }
 		} catch (ServletException e) {
