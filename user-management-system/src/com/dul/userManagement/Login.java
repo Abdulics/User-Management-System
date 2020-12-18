@@ -28,7 +28,7 @@ public class Login extends HttpServlet {
 	public void init() throws ServletException {
 		super.init();
 		
-		// create our student db util ... and pass in the conn pool / datasource
+		// create our ums db util ... and pass in the conn pool / datasource
 		try {
 			msd = new Management_system_datasource(dataSource);
 		}
@@ -85,6 +85,9 @@ public class Login extends HttpServlet {
 			}
 	}
 	
+	/*
+	 * Function used to reset password before logged in
+	 */
 	private void passwordReset(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		RequestDispatcher dispatcher;
@@ -107,6 +110,9 @@ public class Login extends HttpServlet {
 		}
 	}
 		
+	/*
+	 * Function used to reset password while logged in.
+	 */
 		private void resetPassword(HttpServletRequest request, HttpServletResponse response) {
 			HttpSession session = request.getSession();
 			RequestDispatcher dispatcher;
@@ -130,6 +136,10 @@ public class Login extends HttpServlet {
 		
 	}
 
+		/*
+		 * Takes username and password of user and calls database. If passed 
+		 * inputs are correct, user will have access to the web app else it will redirect to the login page.
+		 */
 	private void login(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession(true);
 		String uname = request.getParameter("username");
@@ -148,6 +158,9 @@ public class Login extends HttpServlet {
 		}
 	}
 	
+	/*
+	 * Removes session attributes to logout of the web.
+	 */
 	private void logout(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		try {
@@ -159,6 +172,9 @@ public class Login extends HttpServlet {
 		}
 	}
 	
+	/*
+	 * Function used to update user information, including first and lastname and password.
+	 */
 	private void updateinfo(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		RequestDispatcher dispatcher;
@@ -182,6 +198,9 @@ public class Login extends HttpServlet {
 		}
 	}
 	
+	/*
+	 * Makes the user form inside the web app editable.
+	 */
 	private void editable(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		RequestDispatcher dispatcher;
@@ -200,6 +219,9 @@ public class Login extends HttpServlet {
 		}
 	}
 	
+	/*
+	 * After an edit is done, this function is to make user form uneditable.
+	 */
 	private void NotEditable(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		RequestDispatcher dispatcher;
@@ -213,6 +235,11 @@ public class Login extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+	/*
+	 * Helper function for login, used to set data into the session after user was able to login successful.
+	 * If user login was not correct, this function is never reached.
+	 */
 	private void cheker(HttpServletRequest request, HttpServletResponse response, HttpSession session, String page, boolean boo) {
 		String str = "";
 		try {

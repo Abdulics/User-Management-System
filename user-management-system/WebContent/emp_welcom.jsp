@@ -96,7 +96,7 @@ body {
 	   response.setHeader("Pragma", "no-cache"); //http 1.0
 	%>
 	<c:if test="${logged == null }">
-		<c:redirect url="in.html"></c:redirect>
+		<c:redirect url="login.html"></c:redirect>
 	</c:if>
 	<!-- Top container -->
 	<%@ include file="/welcomeBar.jspf" %>
@@ -119,27 +119,27 @@ body {
 					<td><p>
 							<b>MON</b>
 						</p></td>
-					<td>New record, over 90 views.</td>
+					<td>8am-7pm</td>
 					<td><i>10 Hours</i></td>
 				</tr>
 				<tr>
 					<td><b>TUE</b></td>
-					<td>Database error.</td>
+					<td>8am-5pm</td>
 					<td><i>8 Hours</i></td>
 				</tr>
 				<tr>
 					<td><b>WED</b></td>
-					<td>New record, over 40 users.</td>
+					<td>8am-6pm</td>
 					<td><i>11 Hours</i></td>
 				</tr>
 				<tr>
 					<td><b>THU</b></td>
-					<td>New comments.</td>
+					<td>8am-5pm</td>
 					<td><i>8 Hours</i></td>
 				</tr>
 				<tr>
 					<td><b>FRI</b></td>
-					<td>Check transactions.</td>
+					<td>8am-2pm</td>
 					<td><i>5 Hours</i></td>
 				</tr>
 			</table>
@@ -149,12 +149,14 @@ body {
 		<div id="recentreport" class="tabcontent">
 			<h3>Recent Report</h3>
 			<p>This report was generated today</p>
+			<p><i>"I'm done working with the schedule for our new team members"</i><br>
+			<sub>Mary Maxwell</sub></p>
 
 		</div>
 
 		<div id="punch" class="tabcontent">
 			<h3>Last punched-in</h3>
-			<p>You last punched in on</p>
+			<p>You last punched in Yesterday at 8am.</p>
 			<button class="button button4 w3-blue">Clock-In</button>
 		</div>
 

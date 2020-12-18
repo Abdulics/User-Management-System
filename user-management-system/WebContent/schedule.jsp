@@ -47,27 +47,27 @@
 				<td>
 						<b>MON</b>
 					</td>
-				<td>New record, over 90 views.</td>
+				<td>8am-7pm</td>
 				<td><i>10 Hours</i></td>
 			</tr>
 			<tr>
 				<td><b>TUE</b></td>
-				<td>Database error.</td>
+				<td>8am-5pm</td>
 				<td><i>8 Hours</i></td>
 			</tr>
 			<tr>
 				<td><b>WED</b></td>
-				<td>New record, over 40 users.</td>
+				<td>8am-6pm</td>
 				<td><i>11 Hours</i></td>
 			</tr>
 			<tr>
 				<td><b>THU</b></td>
-				<td>New comments.</td>
+				<td>8am-5pm</td>
 				<td><i>8 Hours</i></td>
 			</tr>
 			<tr>
 				<td><b>FRI</b></td>
-				<td>Check transactions.</td>
+				<td>8am-2pm</td>
 				<td><i>5 Hours</i></td>
 			</tr>
 			

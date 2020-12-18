@@ -30,7 +30,7 @@ private Management_system_datasource msd;
 	public void init() throws ServletException {
 		super.init();
 		
-		// create our student db util ... and pass in the conn pool / datasource
+		// create our ums db util ... and pass in the conn pool / datasource
 		try {
 			msd = new Management_system_datasource(dataSource);
 		}
@@ -40,6 +40,7 @@ private Management_system_datasource msd;
 	}
 
 	/**
+	 * Servlet for signing up
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -45,13 +45,13 @@ html, body, h1, h2, h3, h4, h5 {
         <h5>Notifications</h5>
         <table class="w3-table w3-striped w3-white">
           <tr>
-            <td><a href="#" class="w3-bar-item w3-button">Jane likes your post</a></td>
+            <td><a href="#" class="w3-bar-item w3-button">John likes your post</a></td>
           </tr>
           <tr>
-            <td><a href="#" class="w3-bar-item w3-button">Jane likes your post</a></td>
+            <td><a href="#" class="w3-bar-item w3-button">Mary likes your post</a></td>
           </tr>
           <tr>
-            <td><a href="#" class="w3-bar-item w3-button">Jane likes your post</a></td>
+            <td><a href="#" class="w3-bar-item w3-button">Ajay likes your post</a></td>
           </tr>
         </table>
       </div>
@@ -61,37 +61,37 @@ html, body, h1, h2, h3, h4, h5 {
         <table class="w3-table w3-striped w3-white">
           <tr>
             <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
-            <td>New record, over 90 views.</td>
+            <td>John Doe</td>
             <td><i>10 mins</i></td>
           </tr>
           <tr>
             <td><i class="fa fa-bell w3-text-red w3-large"></i></td>
-            <td>Database error.</td>
+            <td>Mary Maxwell</td>
             <td><i>15 mins</i></td>
           </tr>
           <tr>
             <td><i class="fa fa-users w3-text-yellow w3-large"></i></td>
-            <td>New record, over 40 users.</td>
+            <td>Ajay Rao</td>
             <td><i>17 mins</i></td>
           </tr>
           <tr>
             <td><i class="fa fa-comment w3-text-red w3-large"></i></td>
-            <td>New comments.</td>
+            <td>Bill Neely</td>
             <td><i>25 mins</i></td>
           </tr>
           <tr>
             <td><i class="fa fa-bookmark w3-text-blue w3-large"></i></td>
-            <td>Check transactions.</td>
+            <td>Maxwell Dixon</td>
             <td><i>28 mins</i></td>
           </tr>
           <tr>
             <td><i class="fa fa-laptop w3-text-red w3-large"></i></td>
-            <td>CPU overload.</td>
+            <td>Abdul Omar</td>
             <td><i>35 mins</i></td>
           </tr>
           <tr>
             <td><i class="fa fa-share-alt w3-text-green w3-large"></i></td>
-            <td>New shares.</td>
+            <td>Yahya Yunga</td>
             <td><i>39 mins</i></td>
           </tr>
         </table>
