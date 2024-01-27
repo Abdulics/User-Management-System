@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dashboard-styles.css}" />
+</head>
+<body>
+
+<div class="dashboard-container">
+    <!-- Side Navbar -->
+    <nav class="side-navbar">
+        <div class="profile-info">
+            <img src="/images/profile-pic.jpg" alt="Profile Picture" class="profile-pic">
+            <p>Hello, <span sec:authentication="principal.username"></span>!
+            </p>
+        </div>
+        <ul>
+            <li><a href="#">Clock-in</a></li>
+            <li><a href="#">Logout</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Pay Information</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header class="top-header">
+            <div class="real-time-timer">
+                <!-- Real-time timer implementation goes here -->
+            </div>
+        </header>
+
+        <!-- Employee List Section -->
+        <section class="employee-list">
+            <h2>Employee List</h2>
+            <!-- Include employee list content or link to it -->
+            <a href="/employees/list">View Employee List</a>
+        </section>
+
+        <!-- Add more sections as needed -->
+
+    </div>
+</div>
+
+</body>
+</html>
