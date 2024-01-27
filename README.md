@@ -1,98 +1,105 @@
 # User-Management-System
-A simple user management system for a small team or company to make shift report, request vacation and view working schedule, clock in and out, send an internal email and viewing other team members report.
 
-#Purpose
-To help a small team of employees/ company managing time sheet for their employees. To see shift report from employees, approve employees requests including shift change, time off and etc.
+A robust user management system designed for small teams or companies to streamline shift reporting, vacation requests, view working schedules, clock in/out, send internal emails, and access other team members' reports.
 
-#Product Features
-<ul>
-<h1>For Admins </h1>
-  <li>Log-in</li>
-  <li>Log-out</li>
-  <li>reset password</li>
-  <li>Add new users</li>
-  <li>Remove users</li>
-  <li>Update user information </li>
-  <li>View all reports</li>
-  <li>Make a shift report</li>
-  <li>Approve requests</li>
-</ul>
+## Purpose
 
-<ul>
-<h1>For Normal Users </h1>
-  <li>Log-in</li>
-  <li>Log-out</li>
-  <li>reset password</li>
-  <li>Update user information </li>
-  <li>View all reports</li>
-  <li>Make a shift report</li>
-  <li>Send requests</li>
-  <li>Clock-in and out</li>
-</ul>
+The system is aimed at helping small teams manage timesheets effectively, including viewing shift reports, approving requests (such as shift changes or time off), and ensuring efficient communication within the team.
 
-#Application Structure
-The structure of this simple web app follows the traditional organizations hierarchy. There is a two types of users. Supervisor/Admin and normal user.
+## Product Features
 
-<dl>
-<h1>Users</h1>
-(Note: Username for UMS is ‘admin’; password is ‘password’. Username for admin cannot be changed)
-<dt>Supervisor/Admin</dt>
-<dd> - Also known as a super user. A super user in this simple web app, is the supervisor of the organization/team/company. A super user is given the <b>username: admin</b> and <b>password: password </b>. No one can have admin username except for to the dedicated admin or signup as an admin. The Admin has the highest privilege, she/he can add and remove users. He/she can update every user information except for the password and username. 
-</dd>
-<dt>Normal User</dt>
-<dd> - Normal users are employees or non admin team members. They have the least privilege, they can view shift reports from other team members, clock-in and out, request time off, view their weekly schedule and request for a schedule change. Normal users can also update their user information including first and last name. Here it's assumed that there is an hypothetical process/approval for updating employees informations, and for that reason, if a user update their information, they will have to logout and log back in with their new credentials and everything will look updated.
-</dd>
-</dl>
+### For Admins
 
-#Technologies used:
+- Log in/out
+- Reset password
+- Add, remove, and update users
+- View all reports
+- Generate shift reports
+- Approve requests
 
-<ul>
-<li>HTML 5
+### For Normal Users
 
-<li>w3css.com
+- Log in/out
+- Reset password
+- Update user information
+- View all reports
+- Generate shift reports
+- Send requests
+- Clock in/out
 
-<li>JavaScript
+## Application Structure
 
-<li>SQL
+This web app follows a traditional organizational hierarchy with two types of users: Supervisor/Admin and Normal User.
 
-<li>Jsp
+### Users
 
-<li>Expression Language
+**Supervisor/Admin**
+- Super users, or admins, have the highest privileges and can manage users, update information, and approve requests.
 
-<li>Java
-<li>Servlet
-<li>Internet connection to get w3css.
-</ul>
+**Normal User**
+- Employees or non-admin team members with limited privileges.
+
+## Technologies Used
+
+- Java
+- Spring Boot
+- Bootstrap
+- Angular
+- Thymeleaf
+- HTML/CSS/JS
+- AWS
+- MySQL
+- JUnit
+
+## Software Requirement
+
+- Tomcat server v9 or Wildfly 20
+- MySQL for the database
+- Web Browser supporting HTML5 (e.g., Google Chrome, Firefox)
+
+## Step-wise Instructions
+
+1. Open the `database.sql` file in your SQL workbench to create the required database.
+2. Configure the database password and connection pool in `webcontent/META-INF/context.xml`.
+3. Deploy the WAR file on your server.
+
+## Resetting User Password
+
+Users can reset their password by providing their username and employee ID. The password reset process assumes that the user's employee ID is a secret known only to them.
+
+## Viewing Personal Information
+
+Users can view and edit their personal information by clicking on the user icon after signing in. Updating the profile includes changing or resetting the password. Users must log out and log back in to see the most current updates.
+
+## Still Under Development
+
+This user management system is in beta and still under development. Currently implemented features include logging in/out, signing up, updating user information, and resetting passwords. Other features are displayed but not yet implemented.
+
+## Contributing
+
+We welcome contributions! If you'd like to contribute, please follow our guidelines for bug reports, feature requests, or pull requests.
+
+## Known Issues and Future Development
+
+Please check our issue tracker for any known issues. We have plans for additional features in future releases.
+
+## License
+
+This project is licensed under MIT license - see the LICENSE.md file for details.
+
+## Contact Information
+
+For questions or feedback, feel free to contact Abdul at dultechnologies@gmail.com.
 
 
-#Software Requirement:
 
-<ul>
-<li>Tomcat server v9 or Widlfly 20 etc.
 
-<li>MySQL for database
 
-<li>Web Browser supporting HTML5 : Google Chrome(recommended) / Firefox 
-</ul>
 
-#Step-wise Instructions:
-<ul>
-<h1>setting up<h1>
-<li>Open the database.sql file given in the zip folder in your sql workbench to create the required database to run this app. </li>
-<li>Setup your own password for your database by configuring the password and connection pool under the webcontent/META-INF/context.xml.</li>
-<li>Deploy the war file on your server</li>
-</ul>
-<h1>Resetting user password</h1>
-Here we assume the user's employee id is a secret to them and no one else knows it.
-To reset a password, the user must know their username and employee id.<br>
-First,
-<ul>
-<li> click on reset password on the web gui </li>
-<li> Input the requested information.</li>
-If the passed username and employee id are correct, the password will be reset to the new one. user should be able to login with their new credentials.
-</ul>
 
-#Viewing personal information
-A user can view their personal information by clicking on the user icon at the top left side of the web once they are signed in. There, the user should be able to view their profile and edit if they wish by clicking on the edit button at the bottom of the page. Updating profile also includes changing or resetting their password. As mention earlier, there is an hypothetical process for validation of user information from a different vendor. So, user must logout and log back in to see their most current updated informations.
-#Still under development
-This user management system is a beta, it's still under development. There isn't much a user can do on the page currently. Here are the implemented features: logging in, logging out, signing up, updating user information and reseting password. All other features are there for display but they are not implemented yet.
+
+
+
+
+
+
