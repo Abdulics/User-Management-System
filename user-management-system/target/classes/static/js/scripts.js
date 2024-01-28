@@ -61,3 +61,8 @@
   });
 
 })(jQuery); // End of use strict
+
+function redirectToLogin()
+{
+     window.location.href = '/login.html';
+}

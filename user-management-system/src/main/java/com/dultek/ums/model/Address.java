@@ -1,13 +1,12 @@
 package com.dultek.ums.model;
 
 import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 @Embeddable
 @Data

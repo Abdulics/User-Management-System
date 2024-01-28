@@ -100,7 +100,7 @@
 //			 String newPassword = msd.updatePass(em_id, username, password);
 //			 System.out.println("The new password is: "+newPassword);
 //			 session.setAttribute("newPassword", newPassword);
-//			dispatcher = request.getRequestDispatcher("/forgotpassword.jsp");
+//			dispatcher = request.getRequestDispatcher("/forGotPassword.html");
 //			dispatcher.forward(request, response);
 //
 //		} catch (ServletException e) {
@@ -125,7 +125,7 @@
 //				 String newPassword = msd.updatePass(em_id, username, password);
 //				 System.out.println("The new password is: "+newPassword);
 //				 session.setAttribute("newPassword", newPassword);
-//				dispatcher = request.getRequestDispatcher("/resetPassword.jsp");
+//				dispatcher = request.getRequestDispatcher("/resetPassword.html");
 //				dispatcher.forward(request, response);
 //
 //			} catch (ServletException e) {
@@ -147,11 +147,11 @@
 //		String page;
 //		boolean boo;
 //		if(uname.equalsIgnoreCase("admin")) {
-//			page = "welcome.jsp";
+//			page = "welcome.html";
 //			boo = msd.adminsignin(uname, pass);
 //			cheker(request, response, session, page, boo);
 //		} else {
-//		page = "emp_welcom.jsp";
+//		page = "emp_welcom.html";
 //		boo = msd.signin(uname, pass);
 //		System.out.println("Boo is " + boo);
 //		cheker(request, response, session, page, boo);
@@ -188,7 +188,7 @@
 //			 System.out.println("em_d while editing: " + em_id);
 //			 msd.updateinfo(fname, lname, email, em_id);
 //			session.removeAttribute("edit");
-//			dispatcher = request.getRequestDispatcher("/profile.jsp");
+//			dispatcher = request.getRequestDispatcher("/profile.html");
 //			dispatcher.forward(request, response);
 //
 //		} catch (ServletException e) {
@@ -209,7 +209,7 @@
 //				System.out.println("Edit attribute is created..");
 //				System.out.println("em_d before editing is : " + session.getAttribute("em_id"));
 //				session.setAttribute("edit", true);
-//				dispatcher = request.getRequestDispatcher("/profile.jsp");
+//				dispatcher = request.getRequestDispatcher("/profile.html");
 //				dispatcher.forward(request, response);
 //			}
 //		} catch (ServletException e) {
@@ -227,7 +227,7 @@
 //		RequestDispatcher dispatcher;
 //		try {
 //			session.removeAttribute("edit");
-//			dispatcher = request.getRequestDispatcher("/profile.jsp");
+//			dispatcher = request.getRequestDispatcher("/profile.html");
 //			dispatcher.forward(request, response);
 //		} catch (ServletException e) {
 //			e.printStackTrace();

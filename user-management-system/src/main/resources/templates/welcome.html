@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        html, body, h1, h2, h3, h4, h5 {
+            font-family: "Open Sans", sans-serif
+        }
+    </style>
+</head>
+<body class="w3-theme-l5">
+
+<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
+
+    <header class="w3-container" style="padding-top: 22px">
+        <h5>
+            <b><i class="fa fa-dashboard"></i> My Dashboard</b>
+        </h5>
+    </header>
+
+    <div class="w3-panel">
+        <div class="w3-row-padding" style="margin:0 -16px">
+            <div class="w3-third">
+                <h5>Notifications</h5>
+                <table class="w3-table w3-striped w3-white">
+                    <tr th:each="notification : ${notifications}">
+                        <td><a th:href="${notification.link}" class="w3-bar-item w3-button" th:text="${notification.message}"></a></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="w3-twothird">
+                <h5>Recent User List</h5>
+                <table class="w3-table w3-striped w3-white">
+                    <tr th:each="user : ${recentUsers}">
+                        <td><i th:class="${user.icon}"></i></td>
+                        <td th:text="${user.name}"></td>
+                        <td><i th:text="${user.time}"></i></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Get the Sidebar
+    var mySidebar = document.getElementById("mySidebar");
+
+    // Get the DIV with overlay effect
+    var overlayBg = document.getElementById("myOverlay");
+
+    // Toggle between showing and hiding the sidebar, and add overlay effect
+    function w3_open() {
+        if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
+            overlayBg.style.display = "none";
+        } else {
+            mySidebar.style.display = 'block';
+            overlayBg.style.display = "block";
+        }
+    }
+
+    // Close the sidebar with the close button
+    function w3_close() {
+        mySidebar.style.display = "none";
+        overlayBg.style.display = "none";
+    }
+</script>
+</body>
+</html>
