@@ -2,7 +2,7 @@ package com.dultek.ums;
 
 import com.dultek.ums.model.Employee;
 import com.dultek.ums.model.User;
-import com.dultek.ums.service.UserRepository;
+import com.dultek.ums.repo.UserRepository;
 import com.dultek.ums.service.UserService;
 import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;

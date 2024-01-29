@@ -19,7 +19,7 @@ public class UserCredentials {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", unique = true)
+    @JoinColumn(name = "employee_id", referencedColumnName = "employeeId", unique = true)
     private User user;
 
     @NotBlank(message = "Username is required")
