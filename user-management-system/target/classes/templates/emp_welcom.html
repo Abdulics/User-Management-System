@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <style>
+        html, body, h1, h2, h3, h4, h5 {
+            font-family: "Open Sans", sans-serif
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <title>Welcome</title>
+    <style>
+        /* Your existing styles */
+    </style>
+</head>
+<body class="w3-theme-l5">
+
+    <!-- Using Thymeleaf expressions for cache control -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+
+    <!-- Using Thymeleaf syntax for redirection -->
+    <div th:if="${logged == null}">
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            window.location.href = 'login.html';
+            /*]]>*/
+        </script>
+    </div>
+
+    <!-- Top container -->
+    <div th:include="/welcomeBar"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
+
+        <!-- Header -->
+        <header class="w3-container" style="padding-top: 22px">
+            <h5>
+                <b><i class="fa fa-dashboard"></i> My Dashboard</b>
+            </h5>
+        </header>
+
+        <div id="schedule" class="tabcontent">
+            <h3>Weekly Schedule</h3>
+            <p>These are the days you are scheduled to work this week.</p>
+            <table class="w3-table w3-striped w3-white">
+                <tr>
+                    <td><p><b>MON</b></p></td>
+                    <td>8am-7pm</td>
+                    <td><i>10 Hours</i></td>
+                </tr>
+                <tr>
+                    <td><b>TUE</b></td>
+                    <td>8am-5pm</td>
+                    <td><i>8 Hours</i></td>
+                </tr>
+                <tr>
+                    <td><b>WED</b></td>
+                    <td>8am-6pm</td>
+                    <td><i>11 Hours</i></td>
+                </tr>
+                <tr>
+                    <td><b>THU</b></td>
+                    <td>8am-5pm</td>
+                    <td><i>8 Hours</i></td>
+                </tr>
+                <tr>
+                    <td><b>FRI</b></td>
+                    <td>8am-2pm</td>
+                    <td><i>5 Hours</i></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="recentreport" class="tabcontent">
+            <h3>Recent Report</h3>
+            <p>This report was generated today</p>
+            <p><i>"I'm done working with the schedule for our new team members"</i><br>
+            <sub>Mary Maxwell</sub></p>
+        </div>
+
+        <div id="punch" class="tabcontent">
+            <h3>Last punched-in</h3>
+            <p>You last punched in Yesterday at 8am.</p>
+            <button class="button button4 w3-blue">Clock-In</button>
+        </div>
+
+        <!-- End page content -->
+    </div>
+
+    <script>
+        // Your existing JavaScript
+    </script>
+</body>
+</html>
