@@ -2,6 +2,7 @@ package com.dultek.ums.service;
 
 import com.dultek.ums.model.User;
 
+import com.dultek.ums.repo.UserRepository;
 import com.dultek.ums.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

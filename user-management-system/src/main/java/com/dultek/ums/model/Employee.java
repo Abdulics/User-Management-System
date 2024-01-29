@@ -1,12 +1,16 @@
 package com.dultek.ums.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 
 @Entity
+@Table(name = "employee")
 @Data
 @EqualsAndHashCode(callSuper = true) // Ensure equals and hashcode consider superclass fields
 @NoArgsConstructor
@@ -17,6 +21,4 @@ public class Employee extends User {
                     String email, Address address, String ssn, UserCredentials credentials) {
         super(null, employeeId, null, firstName, lastName, email, address, ssn, credentials);
     }
-
-    // Other fields, getters, and setters...
 }

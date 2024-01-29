@@ -47,7 +47,8 @@ public abstract class User {
 	@Email(message = "Invalid email format")
 	private String email;
 
-	@Embedded
+
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Address address;
 
 	@NotBlank(message = "SSN is required")
