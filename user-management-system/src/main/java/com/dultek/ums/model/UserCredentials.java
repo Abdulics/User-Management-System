@@ -18,9 +18,9 @@ public class UserCredentials {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JoinColumn(name = "employee_id", unique = true)
     @OneToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "employeeId", unique = true)
-    private User user;
+    private Employee employee;
 
     @NotBlank(message = "Username is required")
     @Column(unique = true)
@@ -29,7 +29,8 @@ public class UserCredentials {
     @NotBlank(message = "Password is required")
     private String password;
 
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = false)
     private UserRole role;
 
 }

@@ -59,6 +59,27 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\user-management-system\src\main\java\com\dultek\ums\service\UserCredentialsService.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\user-management-system\src\main\java\com\dultek\ums\service\UserCredentialsServiceImpl.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\user-management-system\src\main\java\com\dultek\ums\service\UserOperationServiceImpl.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\user-management-system\src\main\java\com\dultek\ums\service\UserRepository.java">
           <value>
             <Attribute>

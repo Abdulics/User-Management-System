@@ -11,62 +11,52 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class EmployeeTestUtils {
 
     public static Employee createSampleEmployee() {
-        Address address = new Address("123 Main St", "City", "State", "12345-6789");
+        //Address address = new Address("123 Main St", "City", "State", "12345-6789");
         UserCredentials credentials = new UserCredentials();
         credentials.setUsername("john.doe");
         credentials.setPassword("password");
-        credentials.setRole(UserRole.EMPLOYEE);
+        //credentials.setRole(UserRole.EMPLOYEE);
 
         return new Employee(
-                                   // Id
-                "AO1001",                // Employee ID
-                                    // Version
-                "John",                  // First Name
-                "Doe",                   // Last Name
-                "john.doe@example.com",  // Email
-                address,                 // Address
-                "123-45-6789",           // SSN
-//                new UserCredentials("john.doe", "password", UserRole.EMPLOYEE)
-                credentials
         );
     }
 
     public static Employee createValidEmployee() {
-        Address address = new Address("123 Main St", "City", "State", "12345-6789");
+       // Address address = new Address("123 Main St", "City", "State", "12345-6789");
 
         UserCredentials credentials = new UserCredentials();
         credentials.setUsername("john.doe");
         credentials.setPassword("password");
-        credentials.setRole(UserRole.EMPLOYEE);
+        //credentials.setRole(UserRole.EMPLOYEE);
 
         return new Employee(
-                "AO1000", // Replace with a valid employee ID
-                "John",
-                "Doe",
-                "john.doe@example.com",
-                address,
-                "123-45-6789",
-                credentials
+                //"AO1000", // Replace with a valid employee ID
+                //"John",
+                //"Doe",
+                //"john.doe@example.com",
+                //address,
+                //"123-45-6789",
+                //credentials
         );
     }
 
     @Test
     public static Employee createInvalidEmployee() {
-        Address address = new Address("123 Main St", "City", "State", "12345-6789");
+        //Address address = new Address("123 Main St", "City", "State", "12345-6789");
 
         UserCredentials credentials = new UserCredentials();
         credentials.setUsername("marry.doe");
         credentials.setPassword("password");
-        credentials.setRole(UserRole.EMPLOYEE);
+        //credentials.setRole(UserRole.EMPLOYEE);
 
         return new Employee(
-                "AO1001", // Replace with a valid employee ID
-                null,
-                "Doe",
-                "marry.doe@example.com",
-                address,
-                "123-45-9876",
-                credentials
+                //"AO1001", // Replace with a valid employee ID
+                //null,
+                //"Doe",
+               // "marry.doe@example.com",
+               // address,
+               // "123-45-9876",
+                //credentials
         );
 
     }

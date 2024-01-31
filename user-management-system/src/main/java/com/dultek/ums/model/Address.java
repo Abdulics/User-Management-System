@@ -34,8 +34,11 @@ public class Address {
     @Size(max = 20, message = "Zip Code must be less than 20 characters")
     private String zipCode;
 
-    @OneToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "employeeId")
-    private User user;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(
+            name = "employee_id",
+            referencedColumnName = "employeeId"
+    )
+    private Employee employee;
 }
 

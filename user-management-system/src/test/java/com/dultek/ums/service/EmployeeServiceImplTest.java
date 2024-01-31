@@ -5,31 +5,31 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class UserOperationServiceImplTest {
+public class EmployeeServiceImplTest {
 
-    private UserOperationService userOperationService = new UserOperationServiceImpl();
+    private EmployeeService employeeService = new EmployeeServiceImpl();
 
     @Test
     public void testLogin() {
-        assertDoesNotThrow(() -> userOperationService.login());
+        assertDoesNotThrow(() -> employeeService.login());
         // Add more assertions based on the behavior of the login method
     }
 
     @Test
     public void testLogout() {
-        assertDoesNotThrow(() -> userOperationService.logout());
+        assertDoesNotThrow(() -> employeeService.logout());
         // Add more assertions based on the behavior of the logout method
     }
 
     @Test
     public void testResetPassword() {
-        assertDoesNotThrow(() -> userOperationService.resetPassword());
+        assertDoesNotThrow(() -> employeeService.resetPassword());
         // Add more assertions based on the behavior of the resetPassword method
     }
 
     @Test
     public void testUpdateInformation() {
-        assertDoesNotThrow(() -> userOperationService.updateInformation());
+        assertDoesNotThrow(() -> employeeService.updateInformation());
         // Add more assertions based on the behavior of the updateInformation method
     }
 
@@ -49,7 +49,7 @@ public class UserOperationServiceImplTest {
 
     @Test
     public void testDeleteUser() {
-        assertDoesNotThrow(() -> userOperationService.deleteUser(1L)); // Assuming an example user ID
+        assertDoesNotThrow(() -> employeeService.deleteUser(1L)); // Assuming an example user ID
         // Add more assertions based on the behavior of the deleteUser method
     }
 
