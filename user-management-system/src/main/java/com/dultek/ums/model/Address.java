@@ -35,7 +35,8 @@ public class Address {
     private String zipCode;
 
     @OneToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "employeeId")
+    @JoinColumn(name = "employee_id", referencedColumnName = "employee_id", unique = true)
     private User user;
+
 }
 

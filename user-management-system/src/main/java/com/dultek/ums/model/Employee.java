@@ -21,4 +21,13 @@ public class Employee extends User {
                     String email, Address address, String ssn, UserCredentials credentials) {
         super(null, employeeId, null, firstName, lastName, email, address, ssn, credentials);
     }
+
+    public Employee(String maimuna, String munaMuna, String mail) {
+    }
+
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

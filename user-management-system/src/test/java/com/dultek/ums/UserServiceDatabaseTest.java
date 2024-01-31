@@ -2,8 +2,8 @@ package com.dultek.ums;
 
 import com.dultek.ums.model.Employee;
 import com.dultek.ums.model.User;
-import com.dultek.ums.repo.UserRepository;
-import com.dultek.ums.service.UserService;
+import com.dultek.ums.repo.UserOperationServiceRepository;
+import com.dultek.ums.service.UserOperationServiceImpl;
 import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +18,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserServiceDatabaseTest {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserOperationServiceRepository userOperationServiceRepository;
 
     @Autowired
-    private UserService userService;
+    private UserOperationServiceImpl userOperationService;
 
     @Test
     void testSaveEmployee_ValidData() {
@@ -29,10 +29,10 @@ class UserServiceDatabaseTest {
         Employee validEmployee = EmployeeTestUtils.createValidEmployee();
         User user = validEmployee;
         // Call the service method to save the employee
-        userService.saveUser(user);
+        userOperationService.saveUser(user);
 
         // Retrieve the saved employee from the database
-        Optional<User> savedEmployee = userRepository.findById(String.valueOf(validEmployee.getId()));
+        Optional<User> savedEmployee = userOperationServiceRepository.findById(String.valueOf(validEmployee.getId()));
 
         // Assertions on the saved employee's properties
         assertTrue(((Optional<?>) savedEmployee).isPresent());
@@ -47,10 +47,10 @@ class UserServiceDatabaseTest {
         User invalidUser = invalidEmployee;
 
         // Call the method to be tested and expect an exception
-        assertThrows(ConstraintViolationException.class, () -> userService.saveUser(invalidUser));
+        assertThrows(ConstraintViolationException.class, () -> userOperationService.saveUser(invalidUser));
 
         // Verify that userRepository.save was not called (since it's an in-memory database)
-        assertEquals(0, userRepository.count());
+        assertEquals(0, userOperationServiceRepository.count());
     }
 
 

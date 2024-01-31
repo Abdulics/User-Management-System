@@ -6,8 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
 @Entity
 @Data
 @AllArgsConstructor
@@ -19,7 +17,7 @@ public class UserCredentials {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "employee_id", referencedColumnName = "employeeId", unique = true)
+    @JoinColumn(name = "employee_id", referencedColumnName = "employee_id", unique = true)
     private User user;
 
     @NotBlank(message = "Username is required")

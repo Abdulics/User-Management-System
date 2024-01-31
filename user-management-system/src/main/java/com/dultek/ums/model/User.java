@@ -1,5 +1,6 @@
 package com.dultek.ums.model;
 
+import com.dultek.ums.validator.UserValidator;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -14,6 +15,7 @@ import jakarta.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EntityListeners(UserEntityListener.class)
 public abstract class User {
 
 	@Id
@@ -21,10 +23,10 @@ public abstract class User {
 	@SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1, initialValue = 1000)
 	private Long id;
 
-	@NotBlank
 	// Employee ID following the specified format (e.g., AO1000)
 	@NotBlank(message = "Employee ID is required")
-	@Pattern(regexp = "^[A-Z]{2}\\d{4}$", message = "Invalid Employee ID format, must be two uppercase letters followed by four digits")
+	//@Pattern(regexp = "^[A-Z]{2}\\d{4}$", message = "Invalid Employee ID format, must be two uppercase letters followed by four digits")
+	@Column(name = "employee_id", unique = true)
 	private String employeeId;
 
 	/*
@@ -58,5 +60,19 @@ public abstract class User {
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private UserCredentials credentials;
 
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", employeeId='" + employeeId + '\'' +
+				", version=" + version +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", email='" + email + '\'' +
+				", address=" + address +
+				", ssn='" + ssn + '\'' +
+				", credentials=" + credentials +
+				'}';
+	}
 }
 

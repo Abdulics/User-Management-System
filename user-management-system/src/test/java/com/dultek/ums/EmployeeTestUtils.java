@@ -10,29 +10,22 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class EmployeeTestUtils {
 
-    public static Employee createSampleEmployee() {
-        Address address = new Address("123 Main St", "City", "State", "12345-6789");
-        UserCredentials credentials = new UserCredentials();
-        credentials.setUsername("john.doe");
-        credentials.setPassword("password");
-        credentials.setRole(UserRole.EMPLOYEE);
+    public static Employee createSampleEmployeeUpdate() {
 
         return new Employee(
-                                   // Id
-                "AO1001",                // Employee ID
-                                    // Version
-                "John",                  // First Name
-                "Doe",                   // Last Name
-                "john.doe@example.com",  // Email
-                address,                 // Address
-                "123-45-6789",           // SSN
-//                new UserCredentials("john.doe", "password", UserRole.EMPLOYEE)
-                credentials
+                "Maimuna",                  // First Name
+                "MunaMuna",                   // Last Name
+                "Maimuna.muna@example.com"      // Email
         );
     }
 
     public static Employee createValidEmployee() {
-        Address address = new Address("123 Main St", "City", "State", "12345-6789");
+        Address address = new Address();
+        address.setStreet("123 Main St");
+        address.setCity("Cityville");
+        address.setState("State");
+        address.setZipCode("12345");
+
 
         UserCredentials credentials = new UserCredentials();
         credentials.setUsername("john.doe");
@@ -52,7 +45,11 @@ public class EmployeeTestUtils {
 
     @Test
     public static Employee createInvalidEmployee() {
-        Address address = new Address("123 Main St", "City", "State", "12345-6789");
+        Address address = new Address();
+        address.setStreet("123 Main St");
+        address.setCity("Cityville");
+        address.setState("State");
+        address.setZipCode("12345");
 
         UserCredentials credentials = new UserCredentials();
         credentials.setUsername("marry.doe");

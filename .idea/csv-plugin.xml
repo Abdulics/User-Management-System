@@ -52,7 +52,42 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\user-management-system\src\main\java\com\dultek\ums\model\UserEntityListener.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\user-management-system\src\main\java\com\dultek\ums\model\UserRole.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\user-management-system\src\main\java\com\dultek\ums\repo\EmployeeRepository.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\user-management-system\src\main\java\com\dultek\ums\service\EmployeeServiceImpl.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\user-management-system\src\main\java\com\dultek\ums\service\UserOperationService.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\user-management-system\src\main\java\com\dultek\ums\service\UserOperationServiceImpl.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />
@@ -109,6 +144,27 @@
           </value>
         </entry>
         <entry key="\user-management-system\src\test\java\com\dultek\ums\UserServiceTest.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\user-management-system\src\test\java\com\dultek\ums\model\UserTest.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\user-management-system\src\test\java\com\dultek\ums\service\EmployeeServiceImplTest.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\user-management-system\src\test\java\com\dultek\ums\service\UserOperationServiceImplTest.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />
