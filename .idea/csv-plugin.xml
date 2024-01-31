@@ -52,6 +52,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\user-management-system\src\main\java\com\dultek\ums\model\UserEntityListener.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\user-management-system\src\main\java\com\dultek\ums\model\UserRole.java">
           <value>
             <Attribute>
@@ -115,6 +122,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\user-management-system\src\test\java\com\dultek\ums\EmployeeServiceDatabaseTest.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\user-management-system\src\test\java\com\dultek\ums\EmployeeTestUtils.java">
           <value>
             <Attribute>
@@ -130,6 +144,13 @@
           </value>
         </entry>
         <entry key="\user-management-system\src\test\java\com\dultek\ums\UserServiceTest.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\user-management-system\src\test\java\com\dultek\ums\service\EmployeeServiceImplTest.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />

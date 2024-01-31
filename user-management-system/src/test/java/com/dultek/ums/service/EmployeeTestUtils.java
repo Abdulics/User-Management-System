@@ -1,4 +1,4 @@
-package com.dultek.ums;
+package com.dultek.ums.service;
 
 import com.dultek.ums.model.Address;
 import com.dultek.ums.model.Employee;
