@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -48,9 +49,37 @@ public class Employee {
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private UserCredentials credentials;
 
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private Set<UserRole> roles = new HashSet<>();
 
-    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private Address address;
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(employeeId, firstName, lastName, email, ssn);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Employee employee = (Employee) obj;
+        return Objects.equals(employeeId, employee.employeeId) &&
+                Objects.equals(firstName, employee.firstName) &&
+                Objects.equals(lastName, employee.lastName) &&
+                Objects.equals(email, employee.email) &&
+                Objects.equals(ssn, employee.ssn);
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeId=" + employeeId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", ssn='" + ssn + '\'' +
+                '}';
+    }
 }

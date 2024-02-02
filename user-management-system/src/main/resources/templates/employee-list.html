@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/new-styles.css}" />
+</head>
+<body>
+
+<header>
+    <h2>Employee List</h2>
+</header>
+
+<div class="container">
+    <nav>
+        <a th:href="@{/employees/showFormForAdd}" class="add-employee-btn btn btn-primary">Add Employee</a>
+    </nav>
+
+    <div class="page-content">
+        <table>
+            <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="employee : ${employees}">
+                <td th:text="${employee.firstName}"></td>
+                <td th:text="${employee.lastName}"></td>
+                <td th:text="${employee.email}"></td>
+                <td>
+                    <a th:href="@{'/employees/showFormForUpdate/' + ${employee.employeeId}}" class="update-btn btn btn-warning">Update</a>
+                    <a th:href="@{'/employees/delete/' + ${employee.employeeId}}" class="delete-btn btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<form th:action="@{/logout}" method="POST" class="logout-form">
+    <button class="logout-btn btn btn-secondary" type="submit">Logout</button>
+</form>
+
+</body>
+</html>

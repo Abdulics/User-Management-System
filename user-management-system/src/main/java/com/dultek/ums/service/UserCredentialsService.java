@@ -9,4 +9,5 @@ public interface UserCredentialsService {
     UserCredentials updateUserCredentials(UserCredentials userCredentials);
     void deleteUserCredentialsByEmployeeId(Long employeeId);
     void deleteUserCredentialsByUsername(String username);
+
 }

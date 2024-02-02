@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Objects;
 
 
 @Entity
@@ -35,5 +36,30 @@ public class UserCredentials {
     @JoinColumn(name = "role_id", nullable = false)
     private UserRole role;
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, username, password, role);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        UserCredentials that = (UserCredentials) obj;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(username, that.username) &&
+                Objects.equals(password, that.password) &&
+                Objects.equals(role, that.role);
+    }
+
+    @Override
+    public String toString() {
+        return "UserCredentials{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                '}';
+    }
 }
 

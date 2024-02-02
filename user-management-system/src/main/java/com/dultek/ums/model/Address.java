@@ -17,8 +17,7 @@ import lombok.NoArgsConstructor;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long employeeId;
 
     @NotBlank(message = "Street is required")
     @Size(max = 255, message = "Street must be less than 255 characters")
@@ -36,10 +35,14 @@ public class Address {
     @Size(max = 20, message = "Zip Code must be less than 20 characters")
     private String zipCode;
 
+
     @OneToOne
+    @MapsId  // Indicates that employeeId should be used as the primary key
     @JoinColumn(
             name = "employee_id",
-            referencedColumnName = "employeeId"
+            referencedColumnName = "employeeId",
+            unique = true,
+            nullable = false
     )
     private Employee employee;
 }
