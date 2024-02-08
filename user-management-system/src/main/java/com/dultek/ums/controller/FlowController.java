@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class FlowController {
 
-    @GetMapping("/login.html")
+    @GetMapping("/login")
     public String loginPage() {
         return "login";
     }

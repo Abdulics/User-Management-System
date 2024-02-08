@@ -1,5 +1,7 @@
 package com.dultek.ums.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -37,13 +39,14 @@ public class Address {
 
 
     @OneToOne
-    @MapsId  // Indicates that employeeId should be used as the primary key
+    @MapsId
     @JoinColumn(
             name = "employee_id",
             referencedColumnName = "employeeId",
             unique = true,
             nullable = false
     )
+    @JsonBackReference
     private Employee employee;
 }
 

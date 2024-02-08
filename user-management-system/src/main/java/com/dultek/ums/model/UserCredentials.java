@@ -1,5 +1,7 @@
 package com.dultek.ums.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -23,6 +25,7 @@ public class UserCredentials {
 
     @OneToOne
     @JoinColumn(name = "employee_id", unique = true, nullable = false)
+    @JsonBackReference
     private Employee employee;
 
     @NotBlank(message = "Username is required")
@@ -34,6 +37,7 @@ public class UserCredentials {
 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
+    @JsonManagedReference
     private UserRole role;
 
     @Override
