@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\user-management-system\src\main\java\com\dultek\ums\controller\EmployeeViewController.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\user-management-system\src\main\java\com\dultek\ums\controller\FlowController.java">
           <value>
             <Attribute>
@@ -105,6 +112,13 @@
           <value>
             <Attribute>
               <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\user-management-system\src\main\resources\templates\add-employee-form.html">
+          <value>
+            <Attribute>
+              <option name="separator" value=":" />
             </Attribute>
           </value>
         </entry>

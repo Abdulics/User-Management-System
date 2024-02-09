@@ -1,14 +1,13 @@
 package com.dultek.ums.controller;
 
-import com.dultek.ums.model.Address;
-import com.dultek.ums.model.Employee;
-import com.dultek.ums.model.UserCredentials;
-import com.dultek.ums.model.UserRole;
+import com.dultek.ums.model.*;
 import com.dultek.ums.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/employees")
@@ -70,17 +69,20 @@ public class EmployeeViewController {
         Address address = new Address();
         UserCredentials userCredentials = new UserCredentials();
         UserRole userRole = new UserRole();
+        FormData formData = new FormData();
 
         model.addAttribute("employee", employee);
         model.addAttribute("address", address);
         model.addAttribute("userCredentials", userCredentials);
         model.addAttribute("userRole", userRole);
+        model.addAttribute("formData", formData);
         return "add-employee-form";
     }
 
     @PostMapping("/save")
-    public String saveEmployee(@ModelAttribute("employee") Employee employee) {
-        employeeService.saveEmployee(employee);
+    @ResponseBody
+    public String saveEmployee(@RequestBody FormData formData) {
+        //employeeService.saveEmployee(employee);
         return "redirect:/employees/list";
     }
 
