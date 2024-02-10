@@ -1,7 +1,7 @@
 package com.dultek.ums.controller;
 
 import com.dultek.ums.model.*;
-import com.dultek.ums.service.EmployeeService;
+import com.dultek.ums.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,13 +14,19 @@ import java.util.List;
 public class EmployeeViewController {
 
 //    @Autowired
-//    private Employee employee;
-//    private Address address;
-//    private UserCredentials userCredentials;
-//    private UserRole userRole;
+    private Employee employee;
+    private Address address;
+    private UserCredentials userCredentials;
+    private UserRole userRole;
 
     @Autowired
     private EmployeeService employeeService;
+    @Autowired
+   private UserCredentialsService userCredentialsService;
+    @Autowired
+   private UserRoleService userRoleService;
+    @Autowired
+    private AddressService addressService;
 
 //    @Autowired
 //    public EmployeeViewController(Employee employee,
@@ -80,16 +86,45 @@ public class EmployeeViewController {
     }
 
     @PostMapping("/save")
-    @ResponseBody
-    public String saveEmployee(@RequestBody FormData formData) {
-        //employeeService.saveEmployee(employee);
+    public String saveEmployee(@ModelAttribute FormData formData) {
+        // Extract data from the FormData object
+        employee = formData.getEmployee();
+        address = formData.getAddress();
+        userCredentials = formData.getUserCredentials();
+        userRole = formData.getUserRole();
+
+        // Associate the address with the employee
+        address.setEmployee(employee);
+        employee.setAddress(address);
+
+        // Associate the user credentials with the employee
+        userCredentials.setEmployee(employee);
+        employee.setCredentials(userCredentials);
+
+        // Associate the user role with the user credentials
+        userRole.setUserCredentials(userCredentials);
+        userCredentials.setRole(userRole);
+
+        // Save the employee, which will cascade the save operation to associated entities
+        employeeService.saveEmployee(employee);
+
+        // Redirect to the employee list page
         return "redirect:/employees/list";
     }
 
+
     @GetMapping("/showFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable("id") Long id, Model model) {
-        Employee employee = employeeService.getEmployeeById(id);
+        employee = employeeService.getEmployeeById(id);
+        userCredentials = userCredentialsService.getUserCredentialsByEmployeeId(employee.getEmployeeId());
+        userRole = userRoleService.getUserRolesByUserCredentialsId(userCredentials.getCredentialId());
+        address = employee.getAddress();
+        userCredentials.setRole(userRole);
+        employee.setCredentials(userCredentials);
+
         model.addAttribute("employee", employee);
+        model.addAttribute("credentials",userCredentials);
+        //model.addAttribute("userRole",userRole);
         return "employee-form";
     }
 

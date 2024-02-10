@@ -17,7 +17,7 @@ public class EmployeeTestUtils {
     public static Employee createSampleEmployee() {
         // Arrange
         UserRole userRole = new UserRole();
-        userRole.setRole(Role.EMPLOYEE);
+        userRole.setRole(Collections.singleton(Role.EMPLOYEE));
 
         // Use a unique identifier in the username and password to avoid conflicts
         String uniqueIdentifier = UUID.randomUUID().toString().substring(0, 8);
@@ -41,7 +41,7 @@ public class EmployeeTestUtils {
                 .email("johndoe" + uniqueIdentifier + "@email.com")
                 .address(address)
                 .ssn("123-45-6790")
-                .roles(Collections.singleton(userRole))
+                .roles((userRole))
                 .credentials(userCredentials)
                 .build();
 

@@ -9,4 +9,5 @@ public interface UserRoleService {
     List<UserRole> getUserRolesByEmployeeId(Long employeeId);
     UserRole updateUserRole(UserRole userRole);
     void deleteUserRoleByEmployeeId(Long employeeId);
+    UserRole getUserRolesByUserCredentialsId(Long credentialId);
 }

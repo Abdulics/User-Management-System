@@ -6,10 +6,12 @@ import com.dultek.ums.repo.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataAccessResourceFailureException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UserRoleServiceImpl implements UserRoleService{
 
     @Autowired
@@ -70,5 +72,14 @@ public class UserRoleServiceImpl implements UserRoleService{
     @Override
     public void deleteUserRoleByEmployeeId(Long employeeId) {
 
+    }
+
+    /**
+     * @param credentialId
+     * @return
+     */
+    @Override
+    public UserRole getUserRolesByUserCredentialsId(Long credentialId) {
+        return userRoleRepository.getReferenceById(credentialId);
     }
 }

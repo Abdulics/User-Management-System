@@ -12,7 +12,6 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-
 @Entity
 @Table(name = "employee")
 @Data
@@ -50,10 +49,6 @@ public class Employee {
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JsonManagedReference
     private UserCredentials credentials;
-
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-    @JsonManagedReference
-    private Set<UserRole> roles = new HashSet<>();
 
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JsonManagedReference

@@ -22,7 +22,7 @@ public class UserCredentialsServiceImpl implements UserCredentialsService {
 
     @Override
     public UserCredentials getUserCredentialsByEmployeeId(Long employeeId) {
-        return null;
+        return userCredentialsRepository.getReferenceById(employeeId);
     }
 
     @Override
@@ -43,12 +43,12 @@ public class UserCredentialsServiceImpl implements UserCredentialsService {
     public UserCredentials updateUserCredentials(UserCredentials userCredentials) {
         try {
             // Check if the userCredentials has a valid ID
-            if (userCredentials.getId() == null) {
+            if (userCredentials.getCredentialId() == null) {
                 throw new IllegalArgumentException("ID cannot be null for userCredentials update.");
             }
 
             // Retrieve the existing userCredentials from the database
-            Optional<UserCredentials> existingUserCredentialsOptional = userCredentialsRepository.findById(userCredentials.getId());
+            Optional<UserCredentials> existingUserCredentialsOptional = userCredentialsRepository.findById(userCredentials.getCredentialId());
 
             if (existingUserCredentialsOptional.isPresent()) {
                 // Update the existing userCredentials with the new values
@@ -62,7 +62,7 @@ public class UserCredentialsServiceImpl implements UserCredentialsService {
                 return userCredentialsRepository.save(existingUserCredentials);
             } else {
                 // Handle the case where the userCredentials with the given ID is not found
-                throw new MyExceptions.UserCredentialsNotFoundException("UserCredentials not found with ID: " + userCredentials.getId());
+                throw new MyExceptions.UserCredentialsNotFoundException("UserCredentials not found with ID: " + userCredentials.getCredentialId());
             }
         } catch (DataAccessException e) {
             // Handle exceptions related to data access, e.g., database connectivity issues

@@ -8,6 +8,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -19,12 +22,34 @@ public class UserRole {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userRoleId;
 
-    @ManyToOne
-    @JoinColumn(name = "employee_id")
+//    @ManyToOne
+//    @JoinColumn(name = "employee_id")
+//    @JsonBackReference
+//    private Employee employee;
+
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(
+            name = "credential_id",
+            referencedColumnName = "credentialId",
+            unique = true,
+            nullable = false
+    )
     @JsonBackReference
-    private Employee employee;
+    @JsonManagedReference
+    UserCredentials userCredentials;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    @Column(name = "roles", nullable = false)
+    private Set<Role> role;
+
+    @Override
+    public String toString() {
+        return "UserRole{" +
+                "userRoleId=" + userRoleId +
+                ", role=" + role +
+                '}';
+    }
 }
 

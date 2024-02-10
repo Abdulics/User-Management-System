@@ -15,6 +15,8 @@
 <form th:object="${employee}" th:action="@{/employees/save}" method="post">
     <input type="hidden" th:field="*{employeeId}"/>
 
+    <!-- Employee Details -->
+    <h2>Employee Details</h2>
     <label for="firstName">First Name:</label>
     <input type="text" id="firstName" name="firstName" th:field="*{firstName}" required><br>
 
@@ -25,10 +27,50 @@
     <input type="email" id="email" name="email" th:field="*{email}" required><br>
 
     <label for="ssn">SSN:</label>
-    <input type="text" id="ssn" name="ssn" th:field="*{ssn}" required><br>
+    <input type="text" id="ssn" name="ssn" th:field="*{ssn}" pattern="^\d{3}-\d{2}-\d{4}$"
+           title="Invalid SSN format, must be ###-##-####" required><br>
 
+    <!-- Address Details -->
+    <h2>Address</h2>
+    <label for="street">Street:</label>
+    <input type="text" id="street" name="street" th:field="*{address.street}" required><br>
+
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city" th:field="*{address.city}" required><br>
+
+    <label for="state">State:</label>
+    <input type="text" id="state" name="state" th:field="*{address.state}" required><br>
+
+    <label for="zipCode">Zip Code:</label>
+    <input type="text" id="zipCode" name="zipCode" th:field="*{address.zipCode}" required><br>
+
+    <!-- User Credentials -->
+    <h2>User Credentials</h2>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" th:field="*{credentials.username}" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" th:field="*{credentials.password}" required><br>
+
+    <!--  user roles -->
+<!--    <h3>User Roles</h3>-->
+<!--    <div th:each="role, iterStat : ${employee.credentials.role}">-->
+<!--        <label th:for="${'role' + iterStat.index}">Role <span th:text="${iterStat.index + 1}">1</span>:</label>-->
+<!--        <input type="text" th:id="${'role' + iterStat.index}" th:name="${'role' + iterStat.index}" th:field="*{credentials.role[__${iterStat.index}__]}" required><br>-->
+<!--    </div>-->
+
+    <h3>User Roles</h3>
+    <th:block th:each="role : ${employee.credentials.role.role}">
+        <input type="checkbox" th:id="'role_' + ${role}" th:name="'role'" th:value="${role}" checked="checked" />
+        <label th:for="'role_' + ${role}" th:text="${role}"></label><br>
+    </th:block>
+
+
+
+    <!-- Submit button -->
     <button type="submit">Save</button>
 </form>
+
 
 </body>
 </html>

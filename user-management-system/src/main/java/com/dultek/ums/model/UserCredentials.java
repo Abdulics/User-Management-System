@@ -21,9 +21,9 @@ public class UserCredentials {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long credentialId;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "employee_id", unique = true, nullable = false)
     @JsonBackReference
     private Employee employee;
@@ -35,14 +35,13 @@ public class UserCredentials {
     @NotBlank(message = "Password is required")
     private String password;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id", nullable = false)
+    @OneToOne(mappedBy = "userCredentials", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JsonManagedReference
     private UserRole role;
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, role);
+        return Objects.hash(credentialId, username, password, role);
     }
 
     @Override
@@ -50,7 +49,7 @@ public class UserCredentials {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         UserCredentials that = (UserCredentials) obj;
-        return Objects.equals(id, that.id) &&
+        return Objects.equals(credentialId, that.credentialId) &&
                 Objects.equals(username, that.username) &&
                 Objects.equals(password, that.password) &&
                 Objects.equals(role, that.role);
@@ -59,10 +58,9 @@ public class UserCredentials {
     @Override
     public String toString() {
         return "UserCredentials{" +
-                "id=" + id +
+                "id=" + credentialId +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", role=" + role +
                 '}';
     }
 }
